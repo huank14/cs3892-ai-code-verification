@@ -3,6 +3,10 @@
 Tool: CrossHair 0.0.110 (Z3 5.1.0 backend), Python 3.13.5, Windows 11.
 
 ## Setup
+
+Run the following commands from the repository root (Windows):
+
+    cd fm
     python -m venv .venv
     .venv/Scripts/python -m pip install -r requirements.txt
 
@@ -13,8 +17,8 @@ Tool: CrossHair 0.0.110 (Z3 5.1.0 backend), Python 3.13.5, Windows 11.
 
 ## Reading the verdicts (with --report_all, one line per postcondition)
 - `error: false when calling f(...)`: counterexample. Precondition holds, postcondition is false. Sound: the input re-executes.
-- `info: Confirmed over all paths.`: every path under the precondition was explored. Only reachable when the precondition bounds the input (e.g. len(numbers) <= 6).
-- `info: Not confirmed.`: budget exhausted first. Inconclusive; not evidence of correctness.
+- `info: Confirmed over all paths.`: all paths under the precondition were confirmed relative to CrossHair's symbolic model of Python. Justified input bounds can help make exhaustive exploration feasible but are not always required.
+- `info: Not confirmed.`: analysis ended without a counterexample or exhaustive confirmation, for example after budget exhaustion. Inconclusive; not evidence of correctness.
 - `diffbehavior` finds an input on which two functions differ; it is the spec-independent oracle for whether a mutant is behaviorally distinct.
 
 Counterexamples vary between runs (search is not seeded). Archive each one and re-execute it; do not compare inputs across runs.
