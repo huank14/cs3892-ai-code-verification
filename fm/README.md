@@ -1,6 +1,6 @@
 # Topic 7 FM component: CrossHair toy runs
 
-Owner: Bingsong Liu (B: formal method and tool). Tool: CrossHair 0.0.110 (Z3 5.1.0 backend), Python 3.13.5, Windows 11.
+Tool: CrossHair 0.0.110 (Z3 5.1.0 backend), Python 3.13.5, Windows 11.
 
 ## Setup
     python -m venv .venv
