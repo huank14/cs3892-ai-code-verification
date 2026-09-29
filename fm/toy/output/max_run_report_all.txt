@@ -1,0 +1,9 @@
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:9: info: Confirmed over all paths.
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:10: info: Confirmed over all paths.
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:11: error: false when calling max_strong(1, 1) (which returns 2)
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:19: info: Confirmed over all paths.
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:20: info: Confirmed over all paths.
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:21: info: Confirmed over all paths.
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_weak.py:9: info: Confirmed over all paths.
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_weak.py:10: info: Confirmed over all paths.
+exit=1

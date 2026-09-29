@@ -1,0 +1,9 @@
+### crosshair check toy/humaneval_like.py --analysis_kind=PEP316 --per_condition_timeout=60
+D:\...\toy\humaneval_like.py:26: error: false when calling has_close_elements_mutant([0.0, 0.5, -0.25], 0.25) (which returns True)
+exit=1   (wall time 1m08s; the correct has_close_elements produced no counterexample within the budget)
+
+### crosshair diffbehavior toy.humaneval_like.has_close_elements toy.humaneval_like.has_close_elements_mutant --per_condition_timeout=60
+Given: (numbers=[-37845.0, -72745.5, -37844.5, -72745.75], threshold=0.25),
+         toy.humaneval_like.has_close_elements : returns False
+  toy.humaneval_like.has_close_elements_mutant : returns True
+exit=1   (wall time 1m15s)

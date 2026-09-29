@@ -1,0 +1,6 @@
+### crosshair check toy/max_weak.py
+exit=0
+
+### crosshair check toy/max_strong.py
+D:\Desktop\Vanderbilt\CS 3892\projects\topic7-fm\toy\max_strong.py:11: error: false when calling max_strong(1, 1) (which returns 2)
+exit=1
