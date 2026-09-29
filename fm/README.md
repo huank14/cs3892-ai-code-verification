@@ -4,7 +4,7 @@ Tool: CrossHair 0.0.110 (Z3 5.1.0 backend), Python 3.13.5, Windows 11.
 
 ## Setup
     python -m venv .venv
-    .venv/Scripts/python -m pip install -r requirements-lock.txt
+    .venv/Scripts/python -m pip install -r requirements.txt
 
 ## Toy runs (outputs saved under toy/output/)
     .venv/Scripts/python -m crosshair check toy/max_weak.py toy/max_strong.py --analysis_kind=PEP316 --per_condition_timeout=20 --report_all
