@@ -1,2 +1,50 @@
-# cs3892-ai-code-verification
-CS 3892 Fall 2026 — Verifying AI-Generated Code: Specifications as the Contract
+# Verifying AI-Generated Code: Specifications as the Contract
+
+CS 3892 / 5892 — Fall 2026  
+Group E — Topic 7
+
+## Team
+
+- Jiahao Zhang
+- Bingsong Liu
+- Zoey Tang
+- Keyu Huang
+
+## Project
+
+This project studies whether LLM-generated formal specifications are strong
+enough to detect incorrect AI-generated implementations.
+
+We use PEP 316 contracts and CrossHair to analyze Python programs from
+HumanEval. Contract strength will be evaluated using deliberately incorrect
+mutants and compared with human-written reference contracts.
+
+## Planned Toolchain
+
+- Python
+- PEP 316 contracts
+- CrossHair
+- Z3
+- OpenAI HumanEval
+
+## Experimental Plan
+
+- 30 deterministic HumanEval tasks
+- DeepSeek-V4.1-Flash and Qwen/Qwen3.8-27B-FP8
+- 3 independent generations per model and task
+- Human-written reference contracts
+- At least 5 behaviorally distinct mutants per task
+- Contract strength measured by mutation score
+
+## Current Status
+
+The CrossHair toolchain has been tested on a toy contract and HumanEval/0.
+The full benchmark and experiment pipeline are under development.
+
+## Reproducibility
+
+Prompts, model settings, contracts, mutants, verifier outputs, runtimes,
+and counterexamples will be archived in this repository.
+
+Detailed setup and run instructions will be added as the experiment pipeline
+is implemented.
