@@ -48,5 +48,6 @@ The full benchmark and experiment pipeline are under development.
 Prompts, model settings, contracts, mutants, verifier outputs, runtimes,
 and counterexamples will be archived in this repository.
 
-Detailed setup and run instructions will be added as the experiment pipeline
-is implemented.
+Setup, dependencies, run commands, and archived verifier outputs for the toy
+runs are documented in [`fm/README.md`](fm/README.md). Instructions for the full
+experiment pipeline will be added as it is implemented.
