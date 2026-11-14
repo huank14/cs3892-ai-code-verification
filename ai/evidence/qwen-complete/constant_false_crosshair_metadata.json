@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/jiahao/Documents/Codex/2026-09-21/zhen/project/.venv/bin/python",
+    "-m",
+    "crosshair",
+    "check",
+    "ai/evidence/qwen-complete/HumanEval_40_2_constant_false_mutant.py",
+    "--analysis_kind=PEP316",
+    "--report_all",
+    "--per_condition_timeout=60"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 60.78372216701973,
+  "scope": "unchanged generated contract with constant-False mutant; single diagnostic not full mutation evaluation"
+}

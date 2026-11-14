@@ -1,0 +1,5 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.0 (main, Oct  7 2025, 09:34:52) [Clang 17.0.0 (clang-1700.3.19.1)]",
+  "note": "Local diagnostic differs from September Windows environment; not main benchmark"
+}

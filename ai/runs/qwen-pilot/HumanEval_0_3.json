@@ -1,0 +1,40 @@
+{
+  "task_id": "HumanEval/0",
+  "entry_point": "has_close_elements",
+  "repeat": 3,
+  "fingerprint": "6cc244c1e587afce46eca16d57e675260b5b4704b6ca355d1100f28453d49b61",
+  "request": {
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Implement the Python task below and specify its behavior using a PEP 316 contract\nin the target function's docstring. Return exactly one fenced Python code block\ncontaining a standalone module with imports, type annotations, the function, and\nany helpers needed by the implementation or contract.\n\nUse `pre:` for input assumptions supported by the task, and `post:` for output\nrequirements. In postconditions, `__return__` denotes the return value. Contract\nexpressions must be executable Python expressions. Do not call the target\nfunction recursively from its contract. Do not exclude task-valid inputs merely\nto simplify checking. Do not add input-size bounds absent from the task.\nDo not use files, network access, or external packages. You are not given human\nreference contracts, canonical solutions, hidden tests, or verifier feedback.\n\nTask:\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n"
+      }
+    ],
+    "stream": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "started_utc": "2026-11-14T01:52:14.020223+00:00",
+  "response_model": "Qwen/Qwen3.8-27B-FP8",
+  "usage": {
+    "prompt_tokens": 311,
+    "total_tokens": 591,
+    "completion_tokens": 280,
+    "prompt_tokens_details": null
+  },
+  "finish_reason": "stop",
+  "extraction": {
+    "status": "extracted",
+    "preconditions": [
+      "len(numbers) >= 0"
+    ],
+    "postconditions": [
+      "__return__ in (True, False)"
+    ],
+    "note": "AST extraction only; not execution, semantic validation, or CrossHair compatibility"
+  },
+  "status": "response_received",
+  "elapsed_seconds": 44.462
+}

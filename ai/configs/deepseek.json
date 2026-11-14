@@ -1,0 +1,16 @@
+{
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "api_key_env": "DEEPSEEK_API_KEY",
+  "request_parameters": {
+    "thinking": {
+      "type": "enabled"
+    },
+    "reasoning_effort": "low"
+  },
+  "provenance": {
+    "provider_alias_as_of_2026_11_13": "DeepSeek-V4.1-Flash-1017",
+    "sampling": "API defaults; omitted values are provider-managed, not inferred",
+    "status": "pilot; key loaded from server user configuration; credentials never archived"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "HumanEval/6",
+  "entry_point": "parse_nested_parens",
+  "repeat": 3,
+  "fingerprint": "6cc244c1e587afce46eca16d57e675260b5b4704b6ca355d1100f28453d49b61",
+  "request": {
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Implement the Python task below and specify its behavior using a PEP 316 contract\nin the target function's docstring. Return exactly one fenced Python code block\ncontaining a standalone module with imports, type annotations, the function, and\nany helpers needed by the implementation or contract.\n\nUse `pre:` for input assumptions supported by the task, and `post:` for output\nrequirements. In postconditions, `__return__` denotes the return value. Contract\nexpressions must be executable Python expressions. Do not call the target\nfunction recursively from its contract. Do not exclude task-valid inputs merely\nto simplify checking. Do not add input-size bounds absent from the task.\nDo not use files, network access, or external packages. You are not given human\nreference contracts, canonical solutions, hidden tests, or verifier feedback.\n\nTask:\nfrom typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n\n"
+      }
+    ],
+    "stream": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "started_utc": "2026-11-14T01:55:01.987164+00:00",
+  "response_model": "Qwen/Qwen3.8-27B-FP8",
+  "usage": {
+    "prompt_tokens": 301,
+    "total_tokens": 811,
+    "completion_tokens": 510,
+    "prompt_tokens_details": null
+  },
+  "finish_reason": "stop",
+  "extraction": {
+    "status": "format_error",
+    "detail": "expected exactly one code block"
+  },
+  "status": "response_received",
+  "elapsed_seconds": 80.629
+}

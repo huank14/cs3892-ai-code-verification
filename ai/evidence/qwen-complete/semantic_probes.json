@@ -1,0 +1,4516 @@
+{
+  "protocol": "finite canonical-reference and output-perturbation probes; not a mutation score or proof",
+  "eligible_contracts": 6,
+  "contracts_with_observed_semantic_failure": 3,
+  "contracts_with_runtime_errors": 0,
+  "contracts_with_reference_runtime_errors": 0,
+  "rows": [
+    {
+      "sample": "HumanEval_28_1",
+      "task_id": "HumanEval/28",
+      "pre_exclusion_count": 0,
+      "false_rejection_count": 0,
+      "missed_wrong_output_count": 0,
+      "runtime_error_input_count": 0,
+      "reference_runtime_error_input_count": 0,
+      "observed_semantic_failure": false,
+      "probes": [
+        {
+          "input": {
+            "strings": []
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "x",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              ""
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "x",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "a",
+              "b"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "ab",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "ba",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "abx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a b",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "a",
+              "a"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          "expected": "aa",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "aax",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a a",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "ab",
+              "",
+              "c"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "abc",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "cba",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "abcx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a b c",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "x",
+              "yz"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "xyz",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "zyx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "xyzx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "x y z",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "HumanEval_28_2",
+      "task_id": "HumanEval/28",
+      "pre_exclusion_count": 0,
+      "false_rejection_count": 0,
+      "missed_wrong_output_count": 0,
+      "runtime_error_input_count": 0,
+      "reference_runtime_error_input_count": 0,
+      "observed_semantic_failure": false,
+      "probes": [
+        {
+          "input": {
+            "strings": []
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "x",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              ""
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "x",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "a",
+              "b"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "ab",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "ba",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "abx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a b",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "a",
+              "a"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          "expected": "aa",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "aax",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a a",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "ab",
+              "",
+              "c"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "abc",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "cba",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "abcx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a b c",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "x",
+              "yz"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "xyz",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "zyx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "xyzx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "x y z",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "HumanEval_28_3",
+      "task_id": "HumanEval/28",
+      "pre_exclusion_count": 0,
+      "false_rejection_count": 0,
+      "missed_wrong_output_count": 0,
+      "runtime_error_input_count": 0,
+      "reference_runtime_error_input_count": 0,
+      "observed_semantic_failure": false,
+      "probes": [
+        {
+          "input": {
+            "strings": []
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "x",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              ""
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "x",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "a",
+              "b"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "ab",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "ba",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "abx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a b",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "a",
+              "a"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          "expected": "aa",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "aax",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a a",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "ab",
+              "",
+              "c"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "abc",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "cba",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "abcx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "a b c",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "strings": [
+              "x",
+              "yz"
+            ]
+          },
+          "shared_object_index_groups": {
+            "strings": []
+          },
+          "expected": "xyz",
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(strings, list) and all(isinstance(s, str) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, str)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__ == ''.join(strings)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == sum(len(s) for s in strings)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": "",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "zyx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "xyzx",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": "x y z",
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, str)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__ == ''.join(strings)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "HumanEval_40_2",
+      "task_id": "HumanEval/40",
+      "pre_exclusion_count": 0,
+      "false_rejection_count": 0,
+      "missed_wrong_output_count": 7,
+      "runtime_error_input_count": 0,
+      "reference_runtime_error_input_count": 0,
+      "observed_semantic_failure": true,
+      "probes": [
+        {
+          "input": {
+            "l": []
+          },
+          "shared_object_index_groups": {
+            "l": []
+          },
+          "expected": false,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": true,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "l": [
+              0
+            ]
+          },
+          "shared_object_index_groups": {
+            "l": []
+          },
+          "expected": false,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": true,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "l": [
+              0,
+              0,
+              0
+            ]
+          },
+          "shared_object_index_groups": {
+            "l": [
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          "expected": true,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": false,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "l": [
+              1,
+              2,
+              -3
+            ]
+          },
+          "shared_object_index_groups": {
+            "l": []
+          },
+          "expected": true,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": false,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "l": [
+              1,
+              2,
+              3
+            ]
+          },
+          "shared_object_index_groups": {
+            "l": []
+          },
+          "expected": false,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": true,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "l": [
+              1,
+              1,
+              -2
+            ]
+          },
+          "shared_object_index_groups": {
+            "l": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          "expected": true,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": false,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "l": [
+              1,
+              3,
+              -2,
+              1
+            ]
+          },
+          "shared_object_index_groups": {
+            "l": [
+              [
+                0,
+                3
+              ]
+            ]
+          },
+          "expected": true,
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "all(isinstance(x, int) for x in l)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, bool)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": false,
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, bool)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "HumanEval_8_2",
+      "task_id": "HumanEval/8",
+      "pre_exclusion_count": 0,
+      "false_rejection_count": 0,
+      "missed_wrong_output_count": 2,
+      "runtime_error_input_count": 0,
+      "reference_runtime_error_input_count": 0,
+      "observed_semantic_failure": true,
+      "probes": [
+        {
+          "input": {
+            "numbers": []
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            0,
+            1
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                "value_repr": "1",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                0,
+                0
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "1",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                0,
+                999
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "1",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                1,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              0
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            0,
+            0
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                0,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                0,
+                999
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              2,
+              3
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            5,
+            6
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                5,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                5,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                5,
+                999
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                6,
+                6
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                6,
+                5
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              0,
+              2
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            2,
+            0
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                2,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                2,
+                999
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                3,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                0,
+                2
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              -2,
+              3
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            1,
+            -6
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                1,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                999
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                2,
+                -6
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                -6,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              1,
+              1,
+              1
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": [
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          "expected": [
+            3,
+            1
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                3,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                3,
+                999
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                4,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                3
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": "HumanEval_8_3",
+      "task_id": "HumanEval/8",
+      "pre_exclusion_count": 0,
+      "false_rejection_count": 2,
+      "missed_wrong_output_count": 9,
+      "runtime_error_input_count": 0,
+      "reference_runtime_error_input_count": 0,
+      "observed_semantic_failure": true,
+      "probes": [
+        {
+          "input": {
+            "numbers": []
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            0,
+            1
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "all(isinstance(x, int) for x in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[0], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[1], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                0,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                0,
+                999
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              0
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            0,
+            0
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "all(isinstance(x, int) for x in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": false,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[0], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[1], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                "value_repr": "0",
+                "truth": false
+              }
+            ],
+            "short_circuited": true
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                0,
+                1
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "1",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                0,
+                999
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "999",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                1,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              2,
+              3
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            5,
+            6
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "all(isinstance(x, int) for x in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[0], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[1], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                "value_repr": "6",
+                "truth": true
+              },
+              {
+                "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                5,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "0",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                5,
+                1
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "1",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                5,
+                999
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "999",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                6,
+                6
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                6,
+                5
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              0,
+              2
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            2,
+            0
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "all(isinstance(x, int) for x in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": false,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[0], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[1], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                "value_repr": "0",
+                "truth": false
+              }
+            ],
+            "short_circuited": true
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                2,
+                1
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "1",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                2,
+                999
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "999",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                3,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                0,
+                2
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              -2,
+              3
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": []
+          },
+          "expected": [
+            1,
+            -6
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "all(isinstance(x, int) for x in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[0], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[1], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                "value_repr": "-6",
+                "truth": true
+              },
+              {
+                "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                1,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "0",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                1
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "1",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                1,
+                999
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "999",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                2,
+                -6
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                -6,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              1,
+              1,
+              1
+            ]
+          },
+          "shared_object_index_groups": {
+            "numbers": [
+              [
+                0,
+                1,
+                2
+              ]
+            ]
+          },
+          "expected": [
+            3,
+            1
+          ],
+          "pre": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(numbers, list)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "all(isinstance(x, int) for x in numbers)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "reference_post": {
+            "holds": true,
+            "clauses": [
+              {
+                "expression": "isinstance(__return__, tuple)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "len(__return__) == 2",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[0], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "isinstance(__return__[1], int)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[0] == sum(numbers)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                "value_repr": "1",
+                "truth": true
+              },
+              {
+                "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                "value_repr": "True",
+                "truth": true
+              },
+              {
+                "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                "value_repr": "True",
+                "truth": true
+              }
+            ]
+          },
+          "wrong_outputs": [
+            {
+              "output": [
+                3,
+                0
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "0",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                3,
+                999
+              ],
+              "post": {
+                "holds": true,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+                    "value_repr": "999",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+                    "value_repr": "True",
+                    "truth": true
+                  }
+                ]
+              }
+            },
+            {
+              "output": [
+                4,
+                1
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            },
+            {
+              "output": [
+                1,
+                3
+              ],
+              "post": {
+                "holds": false,
+                "clauses": [
+                  {
+                    "expression": "isinstance(__return__, tuple)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "len(__return__) == 2",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[0], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "isinstance(__return__[1], int)",
+                    "value_repr": "True",
+                    "truth": true
+                  },
+                  {
+                    "expression": "__return__[0] == sum(numbers)",
+                    "value_repr": "False",
+                    "truth": false
+                  }
+                ],
+                "short_circuited": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

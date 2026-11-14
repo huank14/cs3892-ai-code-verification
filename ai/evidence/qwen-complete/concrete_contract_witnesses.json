@@ -1,0 +1,228 @@
+[
+  {
+    "sample": "HumanEval_40_2",
+    "input": {
+      "l": [
+        0,
+        0,
+        0
+      ]
+    },
+    "candidate_output": false,
+    "task_expected_output": true,
+    "pre_holds": true,
+    "post_holds": true,
+    "checks": {
+      "pre": [
+        {
+          "expression": "all(isinstance(x, int) for x in l)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ],
+      "post": [
+        {
+          "expression": "isinstance(__return__, bool)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ]
+    },
+    "scope": "concrete witness using actual CrossHair condition parser; not exhaustive verification"
+  },
+  {
+    "sample": "HumanEval_8_3",
+    "input": {
+      "numbers": [
+        2,
+        3
+      ]
+    },
+    "candidate_output": [
+      5,
+      1
+    ],
+    "task_expected_output": [
+      5,
+      6
+    ],
+    "pre_holds": true,
+    "post_holds": true,
+    "checks": {
+      "pre": [
+        {
+          "expression": "isinstance(numbers, list)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "all(isinstance(x, int) for x in numbers)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ],
+      "post": [
+        {
+          "expression": "isinstance(__return__, tuple)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "len(__return__) == 2",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "isinstance(__return__[0], int)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "isinstance(__return__[1], int)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "__return__[0] == sum(numbers)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+          "value_repr": "1",
+          "truth": true
+        },
+        {
+          "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ]
+    },
+    "scope": "concrete witness using actual CrossHair condition parser; not exhaustive verification"
+  },
+  {
+    "sample": "HumanEval_8_3",
+    "input": {
+      "numbers": [
+        0,
+        2
+      ]
+    },
+    "candidate_output": [
+      2,
+      0
+    ],
+    "task_expected_output": [
+      2,
+      0
+    ],
+    "pre_holds": true,
+    "post_holds": false,
+    "checks": {
+      "pre": [
+        {
+          "expression": "isinstance(numbers, list)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "all(isinstance(x, int) for x in numbers)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ],
+      "post": [
+        {
+          "expression": "isinstance(__return__, tuple)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "len(__return__) == 2",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "isinstance(__return__[0], int)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "isinstance(__return__[1], int)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "__return__[0] == sum(numbers)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "__return__[1] == (lambda acc: acc)(1) * __return__[1] if len(numbers) == 0 else __return__[1]",
+          "value_repr": "0",
+          "truth": false
+        },
+        {
+          "expression": "(__return__[1] == 1 if len(numbers) == 0 else True)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "(all(__return__[1] == __return__[1] * 1 for _ in [0]) if True else True)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ]
+    },
+    "scope": "concrete witness using actual CrossHair condition parser; not exhaustive verification"
+  },
+  {
+    "sample": "HumanEval_8_2",
+    "input": {
+      "numbers": []
+    },
+    "candidate_output": [
+      0,
+      999
+    ],
+    "task_expected_output": [
+      0,
+      1
+    ],
+    "pre_holds": true,
+    "post_holds": true,
+    "checks": {
+      "pre": [
+        {
+          "expression": "isinstance(numbers, list) and all(isinstance(n, int) for n in numbers)",
+          "value_repr": "True",
+          "truth": true
+        }
+      ],
+      "post": [
+        {
+          "expression": "isinstance(__return__, tuple) and len(__return__) == 2",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "__return__[0] == sum(numbers)",
+          "value_repr": "True",
+          "truth": true
+        },
+        {
+          "expression": "__return__[1] == math.prod(numbers) if numbers else 1",
+          "value_repr": "1",
+          "truth": true
+        }
+      ]
+    },
+    "scope": "concrete witness using actual CrossHair condition parser; not exhaustive verification"
+  }
+]

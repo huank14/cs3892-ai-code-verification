@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Publish the two reviewed pilot runs; ignore new unreviewed experiments.
+ai/runs/*
+!ai/runs/qwen-pilot/
+!ai/runs/qwen-format-v2/
+ai/milestone-build/
+ai/reproduced/
+ai/milestone-output/fm-handoff/
+.DS_Store

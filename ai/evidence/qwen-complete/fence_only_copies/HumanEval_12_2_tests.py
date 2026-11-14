@@ -1,0 +1,50 @@
+__name__ = 'reviewed_under_test'
+from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """ Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    >>> longest([])
+
+    >>> longest(['a', 'b', 'c'])
+    'a'
+    >>> longest(['a', 'bb', 'ccc'])
+    'ccc'
+
+    pre:
+        isinstance(strings, list) and all(isinstance(s, str) for s in strings)
+
+    post:
+        if strings:
+            __return__ is not None
+            and isinstance(__return__, str)
+            and __return__ in strings
+            and all(len(s) <= len(__return__) for s in strings)
+            and (strings.index(__return__) == min(range(len(strings)), key=lambda i: (-len(strings[i]), i)))
+        else:
+            __return__ is None
+    """
+    if not strings:
+        return None
+    max_len = -1
+    result = None
+    for s in strings:
+        if len(s) > max_len:
+            max_len = len(s)
+            result = s
+    return result
+
+
+METADATA = {
+    'author': 'jt',
+    'dataset': 'test'
+}
+
+
+def check(candidate):
+    assert candidate([]) == None
+    assert candidate(['x', 'y', 'z']) == 'x'
+    assert candidate(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'
+
+check(longest)

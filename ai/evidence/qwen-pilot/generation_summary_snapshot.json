@@ -1,0 +1,16 @@
+{
+  "attempts": 3,
+  "tasks_attempted": 1,
+  "transport_status": {
+    "response_received": 3
+  },
+  "extraction_status": {
+    "extracted": 3
+  },
+  "finish_reasons": {
+    "stop": 3
+  },
+  "semantic_correctness": "not measured",
+  "crosshair_verdicts": "not measured",
+  "mutation_score": "not measured"
+}

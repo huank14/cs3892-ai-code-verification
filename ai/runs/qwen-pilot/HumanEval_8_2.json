@@ -1,0 +1,34 @@
+{
+  "task_id": "HumanEval/8",
+  "entry_point": "sum_product",
+  "repeat": 2,
+  "fingerprint": "6cc244c1e587afce46eca16d57e675260b5b4704b6ca355d1100f28453d49b61",
+  "request": {
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Implement the Python task below and specify its behavior using a PEP 316 contract\nin the target function's docstring. Return exactly one fenced Python code block\ncontaining a standalone module with imports, type annotations, the function, and\nany helpers needed by the implementation or contract.\n\nUse `pre:` for input assumptions supported by the task, and `post:` for output\nrequirements. In postconditions, `__return__` denotes the return value. Contract\nexpressions must be executable Python expressions. Do not call the target\nfunction recursively from its contract. Do not exclude task-valid inputs merely\nto simplify checking. Do not add input-size bounds absent from the task.\nDo not use files, network access, or external packages. You are not given human\nreference contracts, canonical solutions, hidden tests, or verifier feedback.\n\nTask:\nfrom typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n\n"
+      }
+    ],
+    "stream": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "started_utc": "2026-11-14T01:57:11.640977+00:00",
+  "response_model": "Qwen/Qwen3.8-27B-FP8",
+  "usage": {
+    "prompt_tokens": 303,
+    "total_tokens": 551,
+    "completion_tokens": 248,
+    "prompt_tokens_details": null
+  },
+  "finish_reason": "stop",
+  "extraction": {
+    "status": "format_error",
+    "detail": "expected exactly one code block"
+  },
+  "status": "response_received",
+  "elapsed_seconds": 38.623
+}

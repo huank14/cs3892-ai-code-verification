@@ -1,0 +1,13 @@
+{
+  "model": "Qwen/Qwen3.8-27B-FP8",
+  "base_url": "http://127.0.0.1:18392/v1",
+  "request_parameters": {
+    "chat_template_kwargs": {"enable_thinking": false}
+  },
+  "provenance": {
+    "host": "walla",
+    "model_revision": "c3a462cc3d38cf351f3b26cbd763469eeb74ef81",
+    "sampling": "deployment defaults; archive server generation_config and startup command",
+    "status": "pilot configuration; verify service before calling"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "attempts": 18,
+  "tasks_attempted": 6,
+  "transport_status": {
+    "response_received": 18
+  },
+  "extraction_status": {
+    "extracted": 11,
+    "format_error": 7
+  },
+  "finish_reasons": {
+    "stop": 18
+  },
+  "semantic_correctness": "not measured",
+  "crosshair_verdicts": "not measured",
+  "mutation_score": "not measured"
+}

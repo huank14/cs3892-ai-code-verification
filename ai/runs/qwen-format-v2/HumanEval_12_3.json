@@ -1,0 +1,43 @@
+{
+  "task_id": "HumanEval/12",
+  "entry_point": "longest",
+  "repeat": 3,
+  "fingerprint": "840f0c35085139af72cd828f863358c8b3d36ab2bb377886ca67803c76b3ca5a",
+  "request": {
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Implement the Python task below and specify its behavior using a PEP 316 contract\nin the target function's docstring. Return exactly one fenced Python code block\ncontaining a standalone module with imports, type annotations, the function, and\nany helpers needed by the implementation or contract.\n\nUse `pre:` for input assumptions supported by the task, and `post:` for output\nrequirements. In postconditions, `__return__` denotes the return value. Contract\nexpressions must be executable Python expressions. Put each complete pre: or\npost: expression on ONE physical line. Use Python conditional expressions, not\nif/else statement blocks, inside contracts. Use multiple separate post: lines\nwhen needed. Do not call the target\nfunction recursively from its contract. Do not exclude task-valid inputs merely\nto simplify checking. Do not add input-size bounds absent from the task.\nDo not use files, network access, or external packages. You are not given human\nreference contracts, canonical solutions, hidden tests, or verifier feedback.\n\nTask:\nfrom typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\" Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\n    >>> longest([])\n\n    >>> longest(['a', 'b', 'c'])\n    'a'\n    >>> longest(['a', 'bb', 'ccc'])\n    'ccc'\n    \"\"\"\n\n"
+      }
+    ],
+    "stream": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "started_utc": "2026-11-14T03:21:25.414363+00:00",
+  "response_model": "Qwen/Qwen3.8-27B-FP8",
+  "usage": {
+    "prompt_tokens": 333,
+    "total_tokens": 596,
+    "completion_tokens": 263,
+    "prompt_tokens_details": null
+  },
+  "finish_reason": "stop",
+  "extraction": {
+    "status": "extracted",
+    "preconditions": [
+      "isinstance(strings, list) and all(isinstance(s, str) for s in strings)"
+    ],
+    "postconditions": [
+      "(len(strings) == 0) == (__return__ is None)",
+      "__return__ is None or __return__ in strings",
+      "(len(strings) == 0) or (__return__ is not None and len(__return__) == max(len(s) for s in strings))",
+      "(len(strings) == 0) or (__return__ is not None and strings.index(__return__) == min(i for i, s in enumerate(strings) if len(s) == len(__return__)))"
+    ],
+    "note": "AST extraction only; not execution, semantic validation, or CrossHair compatibility"
+  },
+  "status": "response_received",
+  "elapsed_seconds": 41.664
+}

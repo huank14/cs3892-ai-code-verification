@@ -1,0 +1,18 @@
+Implement the Python task below and specify its behavior using a PEP 316 contract
+in the target function's docstring. Return exactly one fenced Python code block
+containing a standalone module with imports, type annotations, the function, and
+any helpers needed by the implementation or contract.
+
+Use `pre:` for input assumptions supported by the task, and `post:` for output
+requirements. In postconditions, `__return__` denotes the return value. Contract
+expressions must be executable Python expressions. Put each complete pre: or
+post: expression on ONE physical line. Use Python conditional expressions, not
+if/else statement blocks, inside contracts. Use multiple separate post: lines
+when needed. Do not call the target
+function recursively from its contract. Do not exclude task-valid inputs merely
+to simplify checking. Do not add input-size bounds absent from the task.
+Do not use files, network access, or external packages. You are not given human
+reference contracts, canonical solutions, hidden tests, or verifier feedback.
+
+Task:
+{task_prompt}

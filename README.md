@@ -43,6 +43,13 @@ The toy contracts, the exact commands, and the verbatim verifier output are in
 [`fm/`](fm/README.md) (CrossHair 0.0.110, Z3 5.1.0, Python 3.13.5).
 The full benchmark and experiment pipeline are under development.
 
+The completed AI pilot contains 36 Qwen responses across two prompts and six
+HumanEval tasks. Code, original outputs, reproduction instructions and the FM
+handoff are in [`ai/`](ai/README.md). Readable contracts were 6/18 for V1 and
+13/18 for V2; this descriptive pilot is separate from the final 30-task evaluation. See
+[`ai/DIFFICULTY.md`](ai/DIFFICULTY.md) for the proposed ceiling-effect diagnosis;
+generation compatibility must not be reported as contract strength.
+
 ## Reproducibility
 
 Prompts, model settings, contracts, mutants, verifier outputs, runtimes,

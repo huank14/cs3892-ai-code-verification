@@ -1,0 +1,180 @@
+[
+  {
+    "sample": "HumanEval_0_1",
+    "preconditions": 2,
+    "postconditions": 1,
+    "syntax_errors": [
+      {
+        "line": 10,
+        "message": "'(' was never closed (<string>, line 1)"
+      }
+    ],
+    "status": "syntax_error",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_0_2",
+    "preconditions": 2,
+    "postconditions": 8,
+    "syntax_errors": [
+      {
+        "line": 12,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 14,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 15,
+        "message": "'(' was never closed (<string>, line 1)"
+      },
+      {
+        "line": 17,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 18,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 19,
+        "message": "unmatched ')' (<string>, line 1)"
+      }
+    ],
+    "status": "syntax_error",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_0_3",
+    "preconditions": 2,
+    "postconditions": 5,
+    "syntax_errors": [
+      {
+        "line": 13,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 15,
+        "message": "invalid syntax (<string>, line 1)"
+      }
+    ],
+    "status": "syntax_error",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_12_1",
+    "preconditions": 2,
+    "postconditions": 6,
+    "syntax_errors": [
+      {
+        "line": 20,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 22,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 23,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 24,
+        "message": "invalid syntax (<string>, line 1)"
+      }
+    ],
+    "status": "syntax_error",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_28_1",
+    "preconditions": 1,
+    "postconditions": 2,
+    "syntax_errors": [],
+    "status": "parsed",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_28_2",
+    "preconditions": 1,
+    "postconditions": 3,
+    "syntax_errors": [],
+    "status": "parsed",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_28_3",
+    "preconditions": 1,
+    "postconditions": 3,
+    "syntax_errors": [],
+    "status": "parsed",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_40_1",
+    "preconditions": 1,
+    "postconditions": 10,
+    "syntax_errors": [
+      {
+        "line": 19,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 21,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 23,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 24,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 25,
+        "message": "invalid syntax (<string>, line 1)"
+      },
+      {
+        "line": 26,
+        "message": "unmatched ')' (<string>, line 1)"
+      },
+      {
+        "line": 27,
+        "message": "unmatched ')' (<string>, line 1)"
+      }
+    ],
+    "status": "syntax_error",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_40_2",
+    "preconditions": 1,
+    "postconditions": 1,
+    "syntax_errors": [],
+    "status": "parsed",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_8_1",
+    "preconditions": 1,
+    "postconditions": 1,
+    "syntax_errors": [
+      {
+        "line": 15,
+        "message": "'(' was never closed (<string>, line 1)"
+      }
+    ],
+    "status": "syntax_error",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  },
+  {
+    "sample": "HumanEval_8_3",
+    "preconditions": 2,
+    "postconditions": 8,
+    "syntax_errors": [],
+    "status": "parsed",
+    "scope": "parser compatibility only; functions not called; not proof or mutation score"
+  }
+]

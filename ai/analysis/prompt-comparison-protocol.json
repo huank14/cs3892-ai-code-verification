@@ -1,0 +1,38 @@
+{
+  "comparison": "development pilot, descriptive not confirmatory",
+  "versions": {
+    "v1": {
+      "prompt": "ai/prompt.txt",
+      "sha256": "1113b115f7e89da765a8b83766075803dacb11a033e615d7f510c76890c0e472",
+      "run": "ai/runs/qwen-pilot"
+    },
+    "v2": {
+      "prompt": "ai/prompt-format-v2.txt",
+      "sha256": "3b7847fd1579952e97f57c484cfed53aaae2a4260d5cf89ed3c37a4e9902e4b5",
+      "run": "ai/runs/qwen-format-v2"
+    }
+  },
+  "fixed": [
+    "task prompts and task order",
+    "model revision",
+    "thinking off",
+    "deployment defaults",
+    "3 independent conversations per task",
+    "no resampling failures"
+  ],
+  "changed": "Added one-line expression formatting instructions only",
+  "evaluation": [
+    "strict extraction",
+    "fence-only extraction",
+    "official finite implementation tests",
+    "explicit postcondition plus CrossHair syntax",
+    "concrete correct-reference rejection and wrong-output acceptance probes"
+  ],
+  "limitations": [
+    "6 purpose-selected tasks",
+    "3 stochastic responses/task",
+    "v2 designed after seeing v1 formatting errors",
+    "not a general model ranking",
+    "no benchmark mutation score or full correctness proof"
+  ]
+}

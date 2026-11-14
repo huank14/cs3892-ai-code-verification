@@ -1,0 +1,40 @@
+{
+  "task_id": "HumanEval/28",
+  "entry_point": "concatenate",
+  "repeat": 2,
+  "fingerprint": "6cc244c1e587afce46eca16d57e675260b5b4704b6ca355d1100f28453d49b61",
+  "request": {
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Implement the Python task below and specify its behavior using a PEP 316 contract\nin the target function's docstring. Return exactly one fenced Python code block\ncontaining a standalone module with imports, type annotations, the function, and\nany helpers needed by the implementation or contract.\n\nUse `pre:` for input assumptions supported by the task, and `post:` for output\nrequirements. In postconditions, `__return__` denotes the return value. Contract\nexpressions must be executable Python expressions. Do not call the target\nfunction recursively from its contract. Do not exclude task-valid inputs merely\nto simplify checking. Do not add input-size bounds absent from the task.\nDo not use files, network access, or external packages. You are not given human\nreference contracts, canonical solutions, hidden tests, or verifier feedback.\n\nTask:\nfrom typing import List\n\n\ndef concatenate(strings: List[str]) -> str:\n    \"\"\" Concatenate list of strings into a single string\n    >>> concatenate([])\n    ''\n    >>> concatenate(['a', 'b', 'c'])\n    'abc'\n    \"\"\"\n\n"
+      }
+    ],
+    "stream": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "started_utc": "2026-11-14T02:01:08.457005+00:00",
+  "response_model": "Qwen/Qwen3.8-27B-FP8",
+  "usage": {
+    "prompt_tokens": 246,
+    "total_tokens": 351,
+    "completion_tokens": 105,
+    "prompt_tokens_details": null
+  },
+  "finish_reason": "stop",
+  "extraction": {
+    "status": "extracted",
+    "preconditions": [
+      "isinstance(strings, list) and all(isinstance(s, str) for s in strings)"
+    ],
+    "postconditions": [
+      "isinstance(__return__, str)"
+    ],
+    "note": "AST extraction only; not execution, semantic validation, or CrossHair compatibility"
+  },
+  "status": "response_received",
+  "elapsed_seconds": 16.863
+}

@@ -1,0 +1,391 @@
+{
+  "samples": 18,
+  "implementation_test_passes_after_fence_only_extraction": 17,
+  "contract_syntax_passes_after_fence_only_extraction": 13,
+  "rows": [
+    {
+      "sample": "HumanEval_0_1",
+      "task_id": "HumanEval/0",
+      "source_text_sha256": "13adbf25c2c8134777b1040e54d87995bb44bc5260423337165e94ceaba1a4a5",
+      "strict_extraction_status": "missing_postcondition",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "missing_postcondition",
+      "contract_errors": [],
+      "preconditions": [],
+      "postconditions": [],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_0_2",
+      "task_id": "HumanEval/0",
+      "source_text_sha256": "3d30d0d6d856dc8a3d76348605090275762449c27b0ae3512a366b9a5544362b",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(numbers, list)",
+        "all(isinstance(x, (int, float)) for x in numbers)",
+        "isinstance(threshold, (int, float))"
+      ],
+      "postconditions": [
+        "__return__ == any(abs(numbers[i] - numbers[j]) < threshold for i in range(len(numbers)) for j in range(i + 1, len(numbers)))",
+        "isinstance(__return__, bool)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_0_3",
+      "task_id": "HumanEval/0",
+      "source_text_sha256": "97a0d05e87ca4653f5019e2b392776daa8fb82fc788b0b4d490ddda642c1a4b3",
+      "strict_extraction_status": "format_error",
+      "normalization": "remove opening fence; closing fence absent",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "len(numbers) >= 0",
+        "threshold > 0"
+      ],
+      "postconditions": [
+        "__return__ is True or __return__ is False",
+        "__return__ == (any(abs(a - b) < threshold for i, a in enumerate(numbers) for b in numbers[i+1:] if b is not a))",
+        "(all(abs(a - b) >= threshold for i, a in enumerate(numbers) for b in numbers[i+1:]) if not __return__ else True)",
+        "(__return__ == False if all(abs(a - b) >= threshold for i, a in enumerate(numbers) for b in numbers[i+1:]) else True)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_12_1",
+      "task_id": "HumanEval/12",
+      "source_text_sha256": "550a88e65cc7276cf67faa0b03d4e8b7c6fbb41f1320e6b4218b8669e09b93da",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "syntax_error",
+      "contract_errors": [
+        {
+          "line": 16,
+          "message": "invalid syntax (<string>, line 1)"
+        },
+        {
+          "line": 17,
+          "message": "invalid syntax (<string>, line 1)"
+        },
+        {
+          "line": 18,
+          "message": "invalid syntax (<string>, line 1)"
+        },
+        {
+          "line": 19,
+          "message": "invalid syntax (<string>, line 1)"
+        },
+        {
+          "line": 20,
+          "message": "invalid syntax (<string>, line 1)"
+        }
+      ],
+      "preconditions": [
+        "isinstance(strings, list) and all(isinstance(s, str) for s in strings)"
+      ],
+      "postconditions": [
+        "strings == [] -> __return__ is None",
+        "strings != [] -> isinstance(__return__, str)",
+        "strings != [] -> __return__ in strings",
+        "strings != [] -> len(__return__) == max(len(s) for s in strings)",
+        "strings != [] -> strings.index(__return__) == min("
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_12_2",
+      "task_id": "HumanEval/12",
+      "source_text_sha256": "0156bbb701bb7031f85990c11b1cd25a3c67bebfea3309cdff79067d9482b224",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(strings, list)",
+        "all(isinstance(s, str) for s in strings)"
+      ],
+      "postconditions": [
+        "(len(strings) == 0) if __return__ is None else True",
+        "(__return__ in strings) if __return__ is not None else True",
+        "(all(len(s) <= len(__return__) for s in strings)) if __return__ is not None else True",
+        "(strings.index(__return__) == next(i for i, s in enumerate(strings) if len(s) == len(__return__))) if __return__ is not None else True"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_12_3",
+      "task_id": "HumanEval/12",
+      "source_text_sha256": "65886b187a2954272a2f2838bbe3c8a1995d7b2b89e76680841fac1ce0c10320",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(strings, list) and all(isinstance(s, str) for s in strings)"
+      ],
+      "postconditions": [
+        "(len(strings) == 0) == (__return__ is None)",
+        "__return__ is None or __return__ in strings",
+        "(len(strings) == 0) or (__return__ is not None and len(__return__) == max(len(s) for s in strings))",
+        "(len(strings) == 0) or (__return__ is not None and strings.index(__return__) == min(i for i, s in enumerate(strings) if len(s) == len(__return__)))"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_28_1",
+      "task_id": "HumanEval/28",
+      "source_text_sha256": "908ce6ca2013fa6aa58dfcaa6b7b8afa7c9d3076f5c809b979a5c1a45282c4bb",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(strings, list) and all(isinstance(s, str) for s in strings)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, str)",
+        "__return__ == ''.join(strings)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_28_2",
+      "task_id": "HumanEval/28",
+      "source_text_sha256": "5b8237a75cc1ab753f64649e2c3ba50512a15faaf7c74d2c8899b62136f0c4d8",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(strings, list) and all(isinstance(s, str) for s in strings)"
+      ],
+      "postconditions": [
+        "__return__ == \"\".join(strings)",
+        "isinstance(__return__, str)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_28_3",
+      "task_id": "HumanEval/28",
+      "source_text_sha256": "44c0d49b617c9b921264e22b4e0860858ef505a2e9468aa4246036e86c2152cf",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "all(isinstance(s, str) for s in strings)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, str)",
+        "__return__ == ''.join(strings)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_40_1",
+      "task_id": "HumanEval/40",
+      "source_text_sha256": "bd4cab1ccebcd9085efd79df86f77e2e255fda8c624eaeffd108ee3ae82c522b",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "all(isinstance(x, int) for x in l)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, bool)",
+        "(__return__ == True) == (any(sum(t) == 0 for t in combinations(l, 3)) if len(l) >= 3 else False)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_40_2",
+      "task_id": "HumanEval/40",
+      "source_text_sha256": "5bd6e753a035b1ef0b1a3d8f2fddfe2e71aed192ba056594985ddaad33461122",
+      "strict_extraction_status": "format_error",
+      "normalization": "remove opening fence; closing fence absent",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "all(isinstance(x, int) for x in l)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, bool)",
+        "__return__ == any(l[i] + l[j] + l[k] == 0 for i in range(len(l)) for j in range(i + 1, len(l)) for k in range(j + 1, len(l)))"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_40_3",
+      "task_id": "HumanEval/40",
+      "source_text_sha256": "f84f753cd3270c2c3472d38ea05da7e74d0ec86a83ac5c170fba11ba55231dbb",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "all(isinstance(x, int) for x in l)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, bool)",
+        "(__return__ == True) == (any(i != j and i != k and j != k and l[i] + l[j] + l[k] == 0 for i in range(len(l)) for j in range(len(l)) for k in range(len(l))))"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_6_1",
+      "task_id": "HumanEval/6",
+      "source_text_sha256": "a2deaa1cbc0784cc32f6399b01e74408200a0e60bb44d92cdf7ce77dd4ead855",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(paren_string, str)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, list)",
+        "all(isinstance(x, int) for x in __return__)",
+        "len(__return__) == len(paren_string.split(' '))",
+        "all(x >= 0 for x in __return__)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_6_2",
+      "task_id": "HumanEval/6",
+      "source_text_sha256": "a3859ee1f1dfdfcd3ecacba68bc5f968c7e653493d5c448bdbce9887a2cad7bb",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "syntax_error",
+      "contract_errors": [
+        {
+          "line": 16,
+          "message": "'(' was never closed (<string>, line 1)"
+        },
+        {
+          "line": 24,
+          "message": "'[' was never closed (<string>, line 1)"
+        }
+      ],
+      "preconditions": [
+        "isinstance(paren_string, str)",
+        "all(c in '() ' for c in paren_string)",
+        "all(group.count('(') == group.count(')') for group in paren_string.split() if group)",
+        "all("
+      ],
+      "postconditions": [
+        "isinstance(__return__, list)",
+        "all(isinstance(x, int) for x in __return__)",
+        "len(__return__) == len([g for g in paren_string.split() if g])",
+        "__return__ == ["
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_6_3",
+      "task_id": "HumanEval/6",
+      "source_text_sha256": "dc1ebd088c02d3e0ee6e6a6c52219a4fa64550570216e63e12e0122799c60eb9",
+      "strict_extraction_status": "extracted",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "syntax_error",
+      "contract_errors": [
+        {
+          "line": 13,
+          "message": "invalid syntax (<string>, line 1)"
+        },
+        {
+          "line": 14,
+          "message": "invalid syntax (<string>, line 1)"
+        }
+      ],
+      "preconditions": [
+        "paren_string is a string where every character is either '(', ')', or ' '",
+        "for every group (split by spaces, ignoring empty tokens), the parentheses are balanced"
+      ],
+      "postconditions": [
+        "len(__return__) == len([g for g in paren_string.split(' ') if g != ''])",
+        "all(x >= 1 for x in __return__)",
+        "all(x == max_level(g) for x, g in zip(__return__, [g for g in paren_string.split(' ') if g != '']))"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_8_1",
+      "task_id": "HumanEval/8",
+      "source_text_sha256": "46415b37f94efb3ce5ea1d49c9cf9f3f669e45283cfb7fdef3c6fcb539b11dea",
+      "strict_extraction_status": "syntax_error",
+      "normalization": "remove surrounding fence",
+      "implementation_tests_pass": false,
+      "implementation_status": "python_syntax_error",
+      "contract_parser_status": "python_syntax_error",
+      "contract_errors": [
+        {
+          "line": 12,
+          "message": "invalid syntax (<unknown>, line 12)"
+        }
+      ]
+    },
+    {
+      "sample": "HumanEval_8_2",
+      "task_id": "HumanEval/8",
+      "source_text_sha256": "b7d06c23906484651f33fafd0554f50e8b1c2e282eccaa33400f8753d79a9292",
+      "strict_extraction_status": "format_error",
+      "normalization": "remove opening fence; closing fence absent",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "isinstance(numbers, list) and all(isinstance(x, int) for x in numbers)"
+      ],
+      "postconditions": [
+        "__return__ is not None and isinstance(__return__, tuple) and len(__return__) == 2",
+        "isinstance(__return__[0], int) and isinstance(__return__[1], int)",
+        "__return__[0] == (sum(numbers) if len(numbers) > 0 else 0)",
+        "__return__[1] == (__import__('math').prod(numbers) if len(numbers) > 0 else 1)"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    },
+    {
+      "sample": "HumanEval_8_3",
+      "task_id": "HumanEval/8",
+      "source_text_sha256": "c770f74a6e1eebb2c35231f5003529e25bf46fd5161a6ce645acb85049d00d8c",
+      "strict_extraction_status": "format_error",
+      "normalization": "remove opening fence; closing fence absent",
+      "implementation_tests_pass": true,
+      "contract_parser_status": "parsed",
+      "contract_errors": [],
+      "preconditions": [
+        "all(isinstance(x, int) and not isinstance(x, bool) for x in numbers)"
+      ],
+      "postconditions": [
+        "isinstance(__return__, tuple)",
+        "len(__return__) == 2",
+        "isinstance(__return__[0], int)",
+        "isinstance(__return__[1], int)",
+        "__return__[0] == (0 if len(numbers) == 0 else sum(numbers))",
+        "__return__[1] == (1 if len(numbers) == 0 else __import__('functools').reduce(lambda a, b: a * b, numbers))"
+      ],
+      "scope": "finite official tests and contract syntax; not full correctness or mutation score"
+    }
+  ]
+}

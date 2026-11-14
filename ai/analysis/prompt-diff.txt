@@ -1,0 +1,14 @@
+--- ai/prompt.txt	2026-11-13 19:47:16
++++ ai/prompt-format-v2.txt	2026-11-13 19:53:28
+@@ -5,7 +5,10 @@
+ 
+ Use `pre:` for input assumptions supported by the task, and `post:` for output
+ requirements. In postconditions, `__return__` denotes the return value. Contract
+-expressions must be executable Python expressions. Do not call the target
++expressions must be executable Python expressions. Put each complete pre: or
++post: expression on ONE physical line. Use Python conditional expressions, not
++if/else statement blocks, inside contracts. Use multiple separate post: lines
++when needed. Do not call the target
+ function recursively from its contract. Do not exclude task-valid inputs merely
+ to simplify checking. Do not add input-size bounds absent from the task.
+ Do not use files, network access, or external packages. You are not given human

@@ -1,0 +1,53 @@
+{
+  "fingerprint": "840f0c35085139af72cd828f863358c8b3d36ab2bb377886ca67803c76b3ca5a",
+  "config": {
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "base_url": "http://127.0.0.1:18392/v1",
+    "request_parameters": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "provenance": {
+      "host": "walla",
+      "model_revision": "c3a462cc3d38cf351f3b26cbd763469eeb74ef81",
+      "sampling": "deployment defaults; archive server generation_config and startup command",
+      "status": "pilot configuration; verify service before calling"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "HumanEval/0",
+      "entry_point": "has_close_elements",
+      "prompt": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n"
+    },
+    {
+      "task_id": "HumanEval/6",
+      "entry_point": "parse_nested_parens",
+      "prompt": "from typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n"
+    },
+    {
+      "task_id": "HumanEval/8",
+      "entry_point": "sum_product",
+      "prompt": "from typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n"
+    },
+    {
+      "task_id": "HumanEval/12",
+      "entry_point": "longest",
+      "prompt": "from typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\" Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\n    >>> longest([])\n\n    >>> longest(['a', 'b', 'c'])\n    'a'\n    >>> longest(['a', 'bb', 'ccc'])\n    'ccc'\n    \"\"\"\n"
+    },
+    {
+      "task_id": "HumanEval/28",
+      "entry_point": "concatenate",
+      "prompt": "from typing import List\n\n\ndef concatenate(strings: List[str]) -> str:\n    \"\"\" Concatenate list of strings into a single string\n    >>> concatenate([])\n    ''\n    >>> concatenate(['a', 'b', 'c'])\n    'abc'\n    \"\"\"\n"
+    },
+    {
+      "task_id": "HumanEval/40",
+      "entry_point": "triples_sum_to_zero",
+      "prompt": "\n\ndef triples_sum_to_zero(l: list):\n    \"\"\"\n    triples_sum_to_zero takes a list of integers as an input.\n    it returns True if there are three distinct elements in the list that\n    sum to zero, and False otherwise.\n\n    >>> triples_sum_to_zero([1, 3, 5, 0])\n    False\n    >>> triples_sum_to_zero([1, 3, -2, 1])\n    True\n    >>> triples_sum_to_zero([1, 2, 3, 7])\n    False\n    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n    True\n    >>> triples_sum_to_zero([1])\n    False\n    \"\"\"\n"
+    }
+  ],
+  "prompt_template": "Implement the Python task below and specify its behavior using a PEP 316 contract\nin the target function's docstring. Return exactly one fenced Python code block\ncontaining a standalone module with imports, type annotations, the function, and\nany helpers needed by the implementation or contract.\n\nUse `pre:` for input assumptions supported by the task, and `post:` for output\nrequirements. In postconditions, `__return__` denotes the return value. Contract\nexpressions must be executable Python expressions. Put each complete pre: or\npost: expression on ONE physical line. Use Python conditional expressions, not\nif/else statement blocks, inside contracts. Use multiple separate post: lines\nwhen needed. Do not call the target\nfunction recursively from its contract. Do not exclude task-valid inputs merely\nto simplify checking. Do not add input-size bounds absent from the task.\nDo not use files, network access, or external packages. You are not given human\nreference contracts, canonical solutions, hidden tests, or verifier feedback.\n\nTask:\n{task_prompt}\n",
+  "repetitions": 3,
+  "runner_sha256": "486dc2bb4924de0d9291c78d563f11602acea344fa99032d199c6450a67308be"
+}

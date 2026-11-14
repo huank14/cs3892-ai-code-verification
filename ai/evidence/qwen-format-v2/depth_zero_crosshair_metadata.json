@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/jiahao/Documents/Codex/2026-09-21/zhen/project/.venv/bin/python",
+    "-m",
+    "crosshair",
+    "check",
+    "ai/evidence/qwen-format-v2/depth_zero_mutant.py",
+    "--analysis_kind=PEP316",
+    "--report_all",
+    "--per_condition_timeout=60"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 241.03741550003178,
+  "scope": "diagnostic selected mutant; unchanged generated contract; not full mutation score"
+}

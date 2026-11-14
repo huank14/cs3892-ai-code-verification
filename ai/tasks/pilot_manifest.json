@@ -1,0 +1,34 @@
+{
+  "purpose": "development pilot, not the frozen 30-task evaluation",
+  "selected_before_generation": true,
+  "source": "https://github.com/openai/human-eval",
+  "revision": "b9453e8f1865df0a0057a1383767caa400acfbcf",
+  "source_data_sha256": "b796127e635a67f93fb35c04f4cb03cf06f38c8072ee7cee8833d7bee06979ef",
+  "tasks": [
+    {
+      "task_id": "HumanEval/0",
+      "reason": "strict inequality, pair indices, empty/singleton"
+    },
+    {
+      "task_id": "HumanEval/6",
+      "reason": "group structure, nesting depth"
+    },
+    {
+      "task_id": "HumanEval/8",
+      "reason": "empty sum/product identities"
+    },
+    {
+      "task_id": "HumanEval/12",
+      "reason": "tie-breaking and empty output"
+    },
+    {
+      "task_id": "HumanEval/28",
+      "reason": "ordering and multiplicity"
+    },
+    {
+      "task_id": "HumanEval/40",
+      "reason": "three distinct indices, duplicate values"
+    }
+  ],
+  "hidden_tests_and_solutions_in_prompts": false
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/jiahao/Documents/Codex/2026-09-21/zhen/project/.venv/bin/python",
+    "-m",
+    "crosshair",
+    "check",
+    "ai/runs/qwen-pilot/HumanEval_0_1.py",
+    "--analysis_kind=PEP316",
+    "--report_all",
+    "--per_condition_timeout=60"
+  ],
+  "exit_code": 1,
+  "elapsed_seconds": 1.2679057919885963,
+  "scope": "compatibility diagnostic only; no mutants; not main evaluation"
+}
