@@ -1,1 +1,110 @@
-[]
+[
+  {
+    "id": "m1",
+    "file": "m1.py",
+    "category": "same index may be reused (elements not distinct)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          1,
+          -2
+        ]
+      ],
+      "expected": false,
+      "actual": true
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m2",
+    "file": "m2.py",
+    "category": "only checks consecutive triples",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          1,
+          5,
+          2,
+          -3
+        ]
+      ],
+      "expected": true,
+      "actual": false
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m3",
+    "file": "m3.py",
+    "category": "off-by-one: last element never used as the third element",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          1,
+          2,
+          -3
+        ]
+      ],
+      "expected": true,
+      "actual": false
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m4",
+    "file": "m4.py",
+    "category": "checks pairs summing to zero instead of triples",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          1,
+          -1,
+          5
+        ]
+      ],
+      "expected": false,
+      "actual": true
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m5",
+    "file": "m5.py",
+    "category": "off-by-one length guard: lists of length 3 always False",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          1,
+          2,
+          -3
+        ]
+      ],
+      "expected": true,
+      "actual": false
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m6",
+    "file": "m6.py",
+    "category": "distinct values instead of distinct positions (deduplicates input)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          1,
+          1,
+          -2
+        ]
+      ],
+      "expected": true,
+      "actual": false
+    },
+    "witness_within_analysis_bound": true
+  }
+]

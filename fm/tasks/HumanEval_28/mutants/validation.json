@@ -1,0 +1,116 @@
+[
+  {
+    "id": "m1",
+    "category": "concatenates in reverse order",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "ab",
+      "mutant": "ba",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_28.reference.concatenate tasks.HumanEval_28.mutants.m1.concatenate --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00\\x00', '\\x00\\x00', '\\x01\\x00\\x00']),\n   tasks.HumanEval_28.reference.concatenate : returns '\\x00\\x00\\x00\\x00\\x01\\x00\\x00'\n  tasks.HumanEval_28.mutants.m1.concatenate : returns '\\x01\\x00\\x00\\x00\\x00\\x00\\x00'"
+    }
+  },
+  {
+    "id": "m2",
+    "category": "joins with a space separator",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "ab",
+      "mutant": "a b",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_28.reference.concatenate tasks.HumanEval_28.mutants.m2.concatenate --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['', '\\x01', '', '', '\\x00\\x00', '', '\\x00']),\n   tasks.HumanEval_28.reference.concatenate : returns '\\x01\\x00\\x00\\x00'\n  tasks.HumanEval_28.mutants.m2.concatenate : returns ' \\x01   \\x00\\x00  \\x00'"
+    }
+  },
+  {
+    "id": "m3",
+    "category": "drops the last string",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "a",
+      "mutant": "",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_28.reference.concatenate tasks.HumanEval_28.mutants.m3.concatenate --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00', '', '\\x00', '', '\\x00']),\n   tasks.HumanEval_28.reference.concatenate : returns '\\x00\\x00\\x00'\n  tasks.HumanEval_28.mutants.m3.concatenate : returns '\\x00\\x00'"
+    }
+  },
+  {
+    "id": "m4",
+    "category": "empty input returns None instead of ''",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "",
+      "mutant": null,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_28.reference.concatenate tasks.HumanEval_28.mutants.m4.concatenate --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=[]),\n   tasks.HumanEval_28.reference.concatenate : returns ''\n  tasks.HumanEval_28.mutants.m4.concatenate : returns None"
+    }
+  },
+  {
+    "id": "m5",
+    "category": "removes duplicate strings",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "aa",
+      "mutant": "a",
+      "passes_official_tests": true
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_28.reference.concatenate tasks.HumanEval_28.mutants.m5.concatenate --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00\\x01', '\\x00\\x01\\x00\\x00', '\\x04\\x01\\x00', '\\x00\\x01\\x00\\x00', '\\x04\\x01\\x00', '\\x00\\x01\\x00\\x00']),\n   tasks.HumanEval_28.reference.concatenate : returns '\\x00\\x01\\x00\\x01\\x00\\x00\\x04\\x01\\x00\\x00\\x01\\x00\\x00\\x04\\x01\\x00\\x00\\x01\\x00\\x00'\n  tasks.HumanEval_28.mutants.m5.concatenate : returns '\\x00\\x01\\x00\\x01\\x00\\x00\\x04\\x01\\x00'"
+    }
+  },
+  {
+    "id": "m6",
+    "category": "sorts strings before concatenating",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "ba",
+      "mutant": "ab",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_28.reference.concatenate tasks.HumanEval_28.mutants.m6.concatenate --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00\\x00', '\\x01\\x00', '\\x01\\x00', '\\x01\\x00', '\\x00\\x00']),\n   tasks.HumanEval_28.reference.concatenate : returns '\\x00\\x00\\x01\\x00\\x01\\x00\\x01\\x00\\x00\\x00'\n  tasks.HumanEval_28.mutants.m6.concatenate : returns '\\x00\\x00\\x00\\x00\\x01\\x00\\x01\\x00\\x01\\x00'"
+    }
+  }
+]

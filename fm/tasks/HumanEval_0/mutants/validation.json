@@ -1,0 +1,116 @@
+[
+  {
+    "id": "m1",
+    "category": "boundary: < replaced by <= (distance equal to threshold counts as close)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": false,
+      "mutant": true,
+      "passes_official_tests": true
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_0.reference.has_close_elements tasks.HumanEval_0.mutants.m1.has_close_elements --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (numbers=[9101.75, 9102.25, 9101.625, 9102.28125, 9102.3125], threshold=0.03125),\n   tasks.HumanEval_0.reference.has_close_elements : returns False\n  tasks.HumanEval_0.mutants.m1.has_close_elements : returns True"
+    }
+  },
+  {
+    "id": "m2",
+    "category": "missing abs(): signed difference, so one ordering of any pair is always < threshold",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": false,
+      "mutant": true,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_0.reference.has_close_elements tasks.HumanEval_0.mutants.m2.has_close_elements --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (numbers=[-5822.0, -36970.0, 0.0, -36970.5, 0.25], threshold=-31148.0),\n   tasks.HumanEval_0.reference.has_close_elements : returns False\n  tasks.HumanEval_0.mutants.m2.has_close_elements : returns True"
+    }
+  },
+  {
+    "id": "m3",
+    "category": "only compares neighbours in original (unsorted) order",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_0.reference.has_close_elements tasks.HumanEval_0.mutants.m3.has_close_elements --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (numbers=[29949.75, 29950.5, -15809.0, 29950.375], threshold=0.625),\n   tasks.HumanEval_0.reference.has_close_elements : returns True\n  tasks.HumanEval_0.mutants.m3.has_close_elements : returns False"
+    }
+  },
+  {
+    "id": "m4",
+    "category": "index check <= instead of !=: an element is compared with itself",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": false,
+      "mutant": true,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_0.reference.has_close_elements tasks.HumanEval_0.mutants.m4.has_close_elements --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (numbers=[13470.75, 13470.5, 13470.875], threshold=0.125),\n   tasks.HumanEval_0.reference.has_close_elements : returns False\n  tasks.HumanEval_0.mutants.m4.has_close_elements : returns True"
+    }
+  },
+  {
+    "id": "m5",
+    "category": "off-by-one: last element never compared",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_0.reference.has_close_elements tasks.HumanEval_0.mutants.m5.has_close_elements --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (numbers=[2334.75, 2335.25, 2335.4166666666665, 2335.3333333333335], threshold=0.16666666666666666),\n   tasks.HumanEval_0.reference.has_close_elements : returns True\n  tasks.HumanEval_0.mutants.m5.has_close_elements : returns False"
+    }
+  },
+  {
+    "id": "m6",
+    "category": "wrong scale: compares against threshold / 2",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_0.reference.has_close_elements tasks.HumanEval_0.mutants.m6.has_close_elements --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (numbers=[-179540.5, 89394.5, -448476.0, 89394.75, 89394.9375], threshold=0.375),\n   tasks.HumanEval_0.reference.has_close_elements : returns True\n  tasks.HumanEval_0.mutants.m6.has_close_elements : returns False"
+    }
+  }
+]

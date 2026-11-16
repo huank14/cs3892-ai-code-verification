@@ -1,0 +1,139 @@
+[
+  {
+    "id": "m1",
+    "category": "final depth instead of peak depth (always 0 for a balanced group)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": [
+        2
+      ],
+      "mutant": [
+        0
+      ],
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_6.reference.parse_nested_parens tasks.HumanEval_6.mutants.m1.parse_nested_parens --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (paren_string='\\x00\\x00\\x00\\x00 (   ('),\n   tasks.HumanEval_6.reference.parse_nested_parens : returns [0, 1, 1]\n  tasks.HumanEval_6.mutants.m1.parse_nested_parens : returns [-4, 1, 1]"
+    }
+  },
+  {
+    "id": "m2",
+    "category": "peak depth off by one (+1)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": [
+        1
+      ],
+      "mutant": [
+        2
+      ],
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_6.reference.parse_nested_parens tasks.HumanEval_6.mutants.m2.parse_nested_parens --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (paren_string='\\x00(    \\x00\\x00'),\n   tasks.HumanEval_6.reference.parse_nested_parens : returns [0, 0]\n  tasks.HumanEval_6.mutants.m2.parse_nested_parens : returns [1, 1]"
+    }
+  },
+  {
+    "id": "m3",
+    "category": "drops the last group",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": [
+        1
+      ],
+      "mutant": [],
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_6.reference.parse_nested_parens tasks.HumanEval_6.mutants.m3.parse_nested_parens --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (paren_string='\\x00(    \\x00\\x00'),\n   tasks.HumanEval_6.reference.parse_nested_parens : returns [0, 0]\n  tasks.HumanEval_6.mutants.m3.parse_nested_parens : returns [0]"
+    }
+  },
+  {
+    "id": "m4",
+    "category": "counts opening parentheses instead of nesting depth",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": [
+        1
+      ],
+      "mutant": [
+        2
+      ],
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_6.reference.parse_nested_parens tasks.HumanEval_6.mutants.m4.parse_nested_parens --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (paren_string='(\\x00(  \\x00 \\x00(\\x00'),\n   tasks.HumanEval_6.reference.parse_nested_parens : returns [1, 0, 0]\n  tasks.HumanEval_6.mutants.m4.parse_nested_parens : returns [2, 0, 1]"
+    }
+  },
+  {
+    "id": "m5",
+    "category": "ignores group separators: treats the whole string as one group",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": [
+        1,
+        2
+      ],
+      "mutant": [
+        2
+      ],
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_6.reference.parse_nested_parens tasks.HumanEval_6.mutants.m5.parse_nested_parens --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (paren_string='\\x00  \\x00   \\x00 \\x00'),\n   tasks.HumanEval_6.reference.parse_nested_parens : returns [0, 0, 0, 0]\n  tasks.HumanEval_6.mutants.m5.parse_nested_parens : returns [0]"
+    }
+  },
+  {
+    "id": "m6",
+    "category": "updates the maximum before incrementing depth (peak off by one, -1)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": [
+        2
+      ],
+      "mutant": [
+        1
+      ],
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_6.reference.parse_nested_parens tasks.HumanEval_6.mutants.m6.parse_nested_parens --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (paren_string=' (\\x00 \\x00 \\x00'),\n   tasks.HumanEval_6.reference.parse_nested_parens : returns [1, 0, 0]\n  tasks.HumanEval_6.mutants.m6.parse_nested_parens : returns [0, 0, 0]"
+    }
+  }
+]

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "m1",
+    "category": "same index may be reused (elements not distinct)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": false,
+      "mutant": true,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_40.reference.triples_sum_to_zero tasks.HumanEval_40.mutants.m1.triples_sum_to_zero --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (l=[-5, -1, 2]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns False\n  tasks.HumanEval_40.mutants.m1.triples_sum_to_zero : returns True\nGiven: (l=[-2, 1, 1, -2, '']),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns True\n  tasks.HumanEval_40.mutants.m1.triples_sum_to_zero : raises TypeError()"
+    }
+  },
+  {
+    "id": "m2",
+    "category": "only checks consecutive triples",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_40.reference.triples_sum_to_zero tasks.HumanEval_40.mutants.m2.triples_sum_to_zero --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (l=[-1, -1, 3, 6, -2]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns True\n  tasks.HumanEval_40.mutants.m2.triples_sum_to_zero : returns False\nGiven: (l=[-1, 0, 0, 0, 0, '', '']),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : raises TypeError()\n  tasks.HumanEval_40.mutants.m2.triples_sum_to_zero : returns True"
+    }
+  },
+  {
+    "id": "m3",
+    "category": "off-by-one: last element never used as the third element",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_40.reference.triples_sum_to_zero tasks.HumanEval_40.mutants.m3.triples_sum_to_zero --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (l=[-1, -1, 0, -3, 3]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns True\n  tasks.HumanEval_40.mutants.m3.triples_sum_to_zero : returns False\nGiven: (l=[-1, 3, -1, -6, 3, '']),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : raises TypeError()\n  tasks.HumanEval_40.mutants.m3.triples_sum_to_zero : returns True"
+    }
+  },
+  {
+    "id": "m4",
+    "category": "checks pairs summing to zero instead of triples",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": false,
+      "mutant": true,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_40.reference.triples_sum_to_zero tasks.HumanEval_40.mutants.m4.triples_sum_to_zero --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (l=[-3, 1, 1, -2, 6]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns True\n  tasks.HumanEval_40.mutants.m4.triples_sum_to_zero : returns False\nGiven: (l=[-1, -1, -1, -1, 1, -1]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns False\n  tasks.HumanEval_40.mutants.m4.triples_sum_to_zero : returns True"
+    }
+  },
+  {
+    "id": "m5",
+    "category": "off-by-one length guard: lists of length 3 always False",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": true
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_40.reference.triples_sum_to_zero tasks.HumanEval_40.mutants.m5.triples_sum_to_zero --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (l=[0, 0, 0]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns True\n  tasks.HumanEval_40.mutants.m5.triples_sum_to_zero : returns False"
+    }
+  },
+  {
+    "id": "m6",
+    "category": "distinct values instead of distinct positions (deduplicates input)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": true,
+      "mutant": false,
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_40.reference.triples_sum_to_zero tasks.HumanEval_40.mutants.m6.triples_sum_to_zero --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (l=[0, re.ASCII, 0, 0]),\n   tasks.HumanEval_40.reference.triples_sum_to_zero : returns True\n  tasks.HumanEval_40.mutants.m6.triples_sum_to_zero : returns False"
+    }
+  }
+]

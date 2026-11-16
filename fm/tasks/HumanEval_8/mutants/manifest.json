@@ -1,1 +1,137 @@
-[]
+[
+  {
+    "id": "m1",
+    "file": "m1.py",
+    "category": "product initialised to 0 instead of 1",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        5,
+        6
+      ],
+      "actual": [
+        5,
+        0
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m2",
+    "file": "m2.py",
+    "category": "empty product returned as 0",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        []
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "actual": [
+        0,
+        0
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m3",
+    "file": "m3.py",
+    "category": "off-by-one: last element skipped",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        5,
+        6
+      ],
+      "actual": [
+        2,
+        2
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m4",
+    "file": "m4.py",
+    "category": "product of absolute values (sign lost)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          -2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        -6
+      ],
+      "actual": [
+        1,
+        6
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m5",
+    "file": "m5.py",
+    "category": "sum ignores negative numbers",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          -1,
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        -2
+      ],
+      "actual": [
+        2,
+        -2
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m6",
+    "file": "m6.py",
+    "category": "tuple order swapped (product, sum)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        5,
+        6
+      ],
+      "actual": [
+        6,
+        5
+      ]
+    },
+    "witness_within_analysis_bound": true
+  }
+]

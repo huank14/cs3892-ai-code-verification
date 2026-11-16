@@ -1,1 +1,109 @@
-[]
+[
+  {
+    "id": "m1",
+    "file": "m1.py",
+    "category": "final depth instead of peak depth (always 0 for a balanced group)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        "(())"
+      ],
+      "expected": [
+        2
+      ],
+      "actual": [
+        0
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m2",
+    "file": "m2.py",
+    "category": "peak depth off by one (+1)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        "()"
+      ],
+      "expected": [
+        1
+      ],
+      "actual": [
+        2
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m3",
+    "file": "m3.py",
+    "category": "drops the last group",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        "()"
+      ],
+      "expected": [
+        1
+      ],
+      "actual": []
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m4",
+    "file": "m4.py",
+    "category": "counts opening parentheses instead of nesting depth",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        "()()"
+      ],
+      "expected": [
+        1
+      ],
+      "actual": [
+        2
+      ]
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m5",
+    "file": "m5.py",
+    "category": "ignores group separators: treats the whole string as one group",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        "() (())"
+      ],
+      "expected": [
+        1,
+        2
+      ],
+      "actual": [
+        2
+      ]
+    },
+    "witness_within_analysis_bound": false
+  },
+  {
+    "id": "m6",
+    "file": "m6.py",
+    "category": "updates the maximum before incrementing depth (peak off by one, -1)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        "(())"
+      ],
+      "expected": [
+        2
+      ],
+      "actual": [
+        1
+      ]
+    },
+    "witness_within_analysis_bound": true
+  }
+]

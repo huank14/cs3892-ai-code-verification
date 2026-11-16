@@ -1,1 +1,100 @@
-[]
+[
+  {
+    "id": "m1",
+    "file": "m1.py",
+    "category": "tie-breaking: returns the last longest string instead of the first",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": "a",
+      "actual": "b"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m2",
+    "file": "m2.py",
+    "category": "empty input returns '' instead of None",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        []
+      ],
+      "expected": null,
+      "actual": ""
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m3",
+    "file": "m3.py",
+    "category": "returns the shortest string (min instead of max)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a",
+          "bb"
+        ]
+      ],
+      "expected": "bb",
+      "actual": "a"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m4",
+    "file": "m4.py",
+    "category": "off-by-one: last string never considered (unless it is the only one)",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a",
+          "bb"
+        ]
+      ],
+      "expected": "bb",
+      "actual": "a"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m5",
+    "file": "m5.py",
+    "category": "lexicographic maximum instead of longest",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "b",
+          "aa"
+        ]
+      ],
+      "expected": "aa",
+      "actual": "b"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m6",
+    "file": "m6.py",
+    "category": "single-element list treated like the empty list",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a"
+        ]
+      ],
+      "expected": "a",
+      "actual": null
+    },
+    "witness_within_analysis_bound": true
+  }
+]

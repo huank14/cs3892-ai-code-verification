@@ -1,0 +1,116 @@
+[
+  {
+    "id": "m1",
+    "category": "tie-breaking: returns the last longest string instead of the first",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "a",
+      "mutant": "b",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_12.reference.longest tasks.HumanEval_12.mutants.m1.longest --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00\\x00', '\\x01\\x00\\x00', '\\x00\\x01\\x00', '\\x00']),\n   tasks.HumanEval_12.reference.longest : returns '\\x01\\x00\\x00'\n  tasks.HumanEval_12.mutants.m1.longest : returns '\\x00\\x01\\x00'"
+    }
+  },
+  {
+    "id": "m2",
+    "category": "empty input returns '' instead of None",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": null,
+      "mutant": "",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_12.reference.longest tasks.HumanEval_12.mutants.m2.longest --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=[]),\n   tasks.HumanEval_12.reference.longest : returns None\n  tasks.HumanEval_12.mutants.m2.longest : returns ''"
+    }
+  },
+  {
+    "id": "m3",
+    "category": "returns the shortest string (min instead of max)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "bb",
+      "mutant": "a",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_12.reference.longest tasks.HumanEval_12.mutants.m3.longest --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00\\x00\\x01', '\\x00\\x00\\x00\\x00', '\\x00\\x00\\x00', '\\x00\\x00']),\n   tasks.HumanEval_12.reference.longest : returns '\\x00\\x00\\x00\\x00'\n  tasks.HumanEval_12.mutants.m3.longest : returns '\\x00\\x00'"
+    }
+  },
+  {
+    "id": "m4",
+    "category": "off-by-one: last string never considered (unless it is the only one)",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "bb",
+      "mutant": "a",
+      "passes_official_tests": true
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_12.reference.longest tasks.HumanEval_12.mutants.m4.longest --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['\\x00', '\\x00\\x00', '\\x01\\x00\\x00', '\\x01\\x00\\x00', '\\x00\\x00\\x00\\x00']),\n   tasks.HumanEval_12.reference.longest : returns '\\x00\\x00\\x00\\x00'\n  tasks.HumanEval_12.mutants.m4.longest : returns '\\x01\\x00\\x00'"
+    }
+  },
+  {
+    "id": "m5",
+    "category": "lexicographic maximum instead of longest",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "aa",
+      "mutant": "b",
+      "passes_official_tests": false
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_12.reference.longest tasks.HumanEval_12.mutants.m5.longest --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['', '\\x00\\x00\\x01', '\\x00\\x00\\x01', '', '\\x01', '', '', '\\x00\\x00']),\n   tasks.HumanEval_12.reference.longest : returns '\\x00\\x00\\x01'\n  tasks.HumanEval_12.mutants.m5.longest : returns '\\x01'"
+    }
+  },
+  {
+    "id": "m6",
+    "category": "single-element list treated like the empty list",
+    "valid": true,
+    "has_witness": true,
+    "reference_matches_expected": true,
+    "mutant_matches_actual": true,
+    "expected_differs_from_actual": true,
+    "observed": {
+      "reference": "a",
+      "mutant": null,
+      "passes_official_tests": true
+    },
+    "diffbehavior": {
+      "command": "/Users/zoeytang/Desktop/2026 Fall/Project/course_project/cs3892-ai-code-verification/fm/.venv/bin/python -m crosshair diffbehavior tasks.HumanEval_12.reference.longest tasks.HumanEval_12.mutants.m6.longest --per_condition_timeout=20.0",
+      "exit_code": 1,
+      "output": "Given: (strings=['']),\n   tasks.HumanEval_12.reference.longest : returns ''\n  tasks.HumanEval_12.mutants.m6.longest : returns None"
+    }
+  }
+]

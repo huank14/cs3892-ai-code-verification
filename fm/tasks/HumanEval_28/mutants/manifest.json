@@ -1,1 +1,100 @@
-[]
+[
+  {
+    "id": "m1",
+    "file": "m1.py",
+    "category": "concatenates in reverse order",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": "ab",
+      "actual": "ba"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m2",
+    "file": "m2.py",
+    "category": "joins with a space separator",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": "ab",
+      "actual": "a b"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m3",
+    "file": "m3.py",
+    "category": "drops the last string",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a"
+        ]
+      ],
+      "expected": "a",
+      "actual": ""
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m4",
+    "file": "m4.py",
+    "category": "empty input returns None instead of ''",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        []
+      ],
+      "expected": "",
+      "actual": null
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m5",
+    "file": "m5.py",
+    "category": "removes duplicate strings",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "a",
+          "a"
+        ]
+      ],
+      "expected": "aa",
+      "actual": "a"
+    },
+    "witness_within_analysis_bound": true
+  },
+  {
+    "id": "m6",
+    "file": "m6.py",
+    "category": "sorts strings before concatenating",
+    "author": "Zoey",
+    "witness": {
+      "args": [
+        [
+          "b",
+          "a"
+        ]
+      ],
+      "expected": "ba",
+      "actual": "ab"
+    },
+    "witness_within_analysis_bound": true
+  }
+]
