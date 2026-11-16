@@ -1,0 +1,6 @@
+{
+  "task_id": "HumanEval/40",
+  "entry_point": "triples_sum_to_zero",
+  "source": "openai/human-eval",
+  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz"
+}

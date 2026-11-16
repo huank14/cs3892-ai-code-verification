@@ -225,3 +225,6 @@ ai/milestone-build/
 ai/reproduced/
 ai/milestone-output/fm-handoff/
 .DS_Store
+
+# FM scratch runs (formal runs under fm/results/<name>/ are committed)
+fm/results/scratch*/

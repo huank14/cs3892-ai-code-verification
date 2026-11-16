@@ -1,0 +1,6 @@
+{
+  "task_id": "HumanEval/6",
+  "entry_point": "parse_nested_parens",
+  "source": "openai/human-eval",
+  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz"
+}

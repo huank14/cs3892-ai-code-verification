@@ -1,0 +1,6 @@
+{
+  "task_id": "HumanEval/12",
+  "entry_point": "longest",
+  "source": "openai/human-eval",
+  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz"
+}

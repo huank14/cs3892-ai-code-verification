@@ -22,3 +22,41 @@ Run the following commands from the repository root (Windows):
 - `diffbehavior` finds an input on which two functions differ; it is the spec-independent oracle for whether a mutant is behaviorally distinct.
 
 Counterexamples vary between runs (search is not seeded). Archive each one and re-execute it; do not compare inputs across runs.
+
+## Verification pipeline (`pipeline/`)
+
+One command checks every contract against every implementation of the selected tasks,
+re-executes every counterexample, and writes per-job JSON, raw CrossHair logs, and a summary table.
+
+    .venv/Scripts/python -m pipeline.make_tasks HumanEval/6          # once per task (already done for the 6 pilot tasks)
+    .venv/Scripts/python -m pipeline.validate_mutants HumanEval/6     # C: check mutant witnesses
+    .venv/Scripts/python -m pipeline.run_matrix --tasks all --timeout 30 --workers 12 --out results/<run-name>
+    .venv/Scripts/python -m unittest discover -s pipeline/tests -t .  # pipeline self-test
+
+Task layout (`tasks/HumanEval_<n>/`): `reference.py` (canonical solution), `tests.py` (official tests),
+`task.json`, `human_contract.py` + `human_contract.md` (D), `mutants/m*.py` + `mutants/manifest.json` (C).
+Templates: `tasks/_templates/`. Qwen contracts and implementations are read, unchanged, from
+`../ai/analysis/samples.json` (only `contract_parser_status == parsed` contracts are checked; every
+generated module that is valid Python is also checked as an implementation against the human contract).
+
+How a contract is applied: the contract's docstring is copied verbatim (raw source text) into the
+implementation in place of its own docstring, and the contract's top-level helpers are prepended
+(`pipeline/compose.py`). Nothing else in the implementation changes. The composed module is saved.
+
+Verdict per contract-implementation pair (`pipeline/run_matrix.py:verdict`):
+
+| Verdict | Meaning |
+|---|---|
+| `REJECTED` | CrossHair input x with pre(x) and not post(x, f(x)); re-execution reproduces it; for non-reference f, the reference satisfies the contract at x |
+| `REJECTED_EXCEPTION` | f raises on an input satisfying pre (re-executed) |
+| `REJECTED_NONDISCRIMINATING` | f is rejected at x, but so is the reference: the contract did not tell them apart |
+| `ACCEPTED_PROVEN` | every postcondition `Confirmed over all paths` (relative to CrossHair's model) |
+| `INCONCLUSIVE` | no counterexample within budget (`Not confirmed`); not evidence of correctness |
+| `PRE_UNSAT`, `CONTRACT_INVALID`, `CONTRACT_ERROR`, `TOOL_ERROR`, `COMPOSE_ERROR` | reported separately |
+
+Mutation score: MS(c) = |{m in M : verdict(c, m) = REJECTED}| / |M|. A contract that rejects the
+reference (symbolically, or on an official-test input in the concrete check) is flagged over-restrictive.
+The concrete check also evaluates every contract on the official-test inputs and mutant witnesses
+(tested, not verified; reported in a separate column).
+
+The worker executes reviewed code in a subprocess with a timeout; it is not a security sandbox.

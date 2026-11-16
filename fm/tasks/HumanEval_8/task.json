@@ -1,0 +1,6 @@
+{
+  "task_id": "HumanEval/8",
+  "entry_point": "sum_product",
+  "source": "openai/human-eval",
+  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz"
+}
