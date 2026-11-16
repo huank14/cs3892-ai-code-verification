@@ -1,0 +1,37 @@
+task_id,implementation,category,verdict,seconds,bounded,unbounded,legal_kill_replays,counterexamples
+HumanEval/12,mutant_m2,empty input returns '' instead of None,REJECTED,0.37,REJECTED,not_run,1,longest([])
+HumanEval/12,mutant_m6,single-element list treated like the empty list,REJECTED,0.37,REJECTED,not_run,1,longest([''])
+HumanEval/12,mutant_m1,tie-breaking: returns the last longest string instead of the first,REJECTED,0.68,REJECTED,not_run,1,"longest(['\x00', '\x01'])"
+HumanEval/12,mutant_m4,off-by-one: last string never considered (unless it is the only one),REJECTED,0.62,REJECTED,not_run,1,"longest(['\x00', '\x00\x00'])"
+HumanEval/12,mutant_m5,lexicographic maximum instead of longest,REJECTED,0.87,REJECTED,not_run,1,"longest(['', '\x02', '\x00\x00'])"
+HumanEval/12,mutant_m3,returns the shortest string (min instead of max),REJECTED,1.05,REJECTED,not_run,1,"longest(['', '\x00'])"
+HumanEval/28,mutant_m4,empty input returns None instead of '',REJECTED,0.3,REJECTED,not_run,1,concatenate([])
+HumanEval/28,mutant_m2,joins with a space separator,REJECTED,1.11,REJECTED,not_run,1,"concatenate(['', ''])"
+HumanEval/28,mutant_m1,concatenates in reverse order,REJECTED,1.72,REJECTED,not_run,1,"concatenate(['\x01', '\x01\x00'])"
+HumanEval/28,mutant_m3,drops the last string,REJECTED,0.99,REJECTED,not_run,1,concatenate(['\x00'])
+HumanEval/40,mutant_m3,off-by-one: last element never used as the third element,REJECTED,1.25,REJECTED,not_run,1,"triples_sum_to_zero([-20896, 12879, 8018, -20897])"
+HumanEval/40,mutant_m2,only checks consecutive triples,REJECTED,1.82,REJECTED,not_run,1,"triples_sum_to_zero([-15809, 2930, -15810, 12879])"
+HumanEval/28,mutant_m6,sorts strings before concatenating,REJECTED,3.94,REJECTED,not_run,1,"concatenate(['\x01', '\x00\x00'])"
+HumanEval/40,mutant_m4,checks pairs summing to zero instead of triples,REJECTED,2.21,REJECTED,not_run,1,"triples_sum_to_zero([47925, -47925])"
+HumanEval/40,mutant_m1,same index may be reused (elements not distinct),REJECTED,4.81,REJECTED,not_run,1,triples_sum_to_zero([0])
+HumanEval/28,mutant_m5,removes duplicate strings,REJECTED,5.62,REJECTED,not_run,1,"concatenate(['\x00', '\x04', '\x00'])"
+HumanEval/40,mutant_m5,off-by-one length guard: lists of length 3 always False,REJECTED,1.86,REJECTED,not_run,1,"triples_sum_to_zero([-47925, 30056, 17869])"
+HumanEval/40,mutant_m6,distinct values instead of distinct positions (deduplicates input),REJECTED,3.15,REJECTED,not_run,1,"triples_sum_to_zero([-25760, 12880, 12880])"
+HumanEval/6,mutant_m3,drops the last group,REJECTED,5.63,REJECTED,not_run,1,parse_nested_parens('()')
+HumanEval/8,mutant_m1,product initialised to 0 instead of 1,REJECTED,0.42,REJECTED,not_run,1,sum_product([2])
+HumanEval/8,mutant_m2,empty product returned as 0,REJECTED,0.4,REJECTED,not_run,1,sum_product([])
+HumanEval/8,mutant_m3,off-by-one: last element skipped,REJECTED,0.53,REJECTED,not_run,1,sum_product([2])
+HumanEval/8,mutant_m4,product of absolute values (sign lost),REJECTED,0.32,REJECTED,not_run,1,sum_product([-1])
+HumanEval/8,mutant_m5,sum ignores negative numbers,REJECTED,1.0,REJECTED,not_run,1,sum_product([-1])
+HumanEval/6,mutant_m1,final depth instead of peak depth (always 0 for a balanced group),REJECTED,11.98,REJECTED,not_run,1,parse_nested_parens('()')
+HumanEval/6,mutant_m2,peak depth off by one (+1),REJECTED,12.4,REJECTED,not_run,1,parse_nested_parens('()')
+HumanEval/6,mutant_m5,ignores group separators: treats the whole string as one group,REJECTED,10.73,REJECTED,not_run,1,parse_nested_parens('')
+HumanEval/8,mutant_m6,"tuple order swapped (product, sum)",REJECTED,0.44,REJECTED,not_run,1,sum_product([])
+HumanEval/6,mutant_m4,counts opening parentheses instead of nesting depth,REJECTED,12.63,REJECTED,not_run,1,parse_nested_parens('()()')
+HumanEval/6,mutant_m6,"updates the maximum before incrementing depth (peak off by one, -1)",REJECTED,10.7,REJECTED,not_run,1,parse_nested_parens('()')
+HumanEval/0,mutant_m4,index check <= instead of !=: an element is compared with itself,REJECTED,63.33,REJECTED,not_run,1,"has_close_elements([0.0], 0.5)"
+HumanEval/0,mutant_m6,wrong scale: compares against threshold / 2,REJECTED,64.64,REJECTED,not_run,1,"has_close_elements([0.5, -0.125], 1.25)"
+HumanEval/0,mutant_m1,boundary: < replaced by <= (distance equal to threshold counts as close),REJECTED,65.07,REJECTED,not_run,1,"has_close_elements([0.0, 0.0], 0.0)"
+HumanEval/0,mutant_m5,off-by-one: last element never compared,REJECTED,66.17,REJECTED,not_run,1,"has_close_elements([0.0, 0.0], 0.5)"
+HumanEval/0,mutant_m2,"missing abs(): signed difference, so one ordering of any pair is always < threshold",REJECTED,69.04,REJECTED,not_run,1,"has_close_elements([0.0, -0.5], 0.0)"
+HumanEval/0,mutant_m3,only compares neighbours in original (unsorted) order,REJECTED,73.62,REJECTED,not_run,1,"has_close_elements([0.0, 0.5, 0.0], 0.25)"
