@@ -242,6 +242,9 @@ def versions() -> dict:
         dirty = bool(subprocess.run(['git', 'status', '--porcelain'], cwd=REPO, capture_output=True, text=True).stdout)
     except OSError:
         commit, dirty = None, None
+    if not commit and (REPO / 'SOURCE_COMMIT').exists():
+        # Source archive without .git (e.g. `git archive` copied to another machine).
+        commit, dirty = (REPO / 'SOURCE_COMMIT').read_text().strip() + ' (git archive)', None
     return {'python': sys.version, 'crosshair': crosshair.__version__, 'z3': z3.get_version_string(),
             'platform': platform.platform(), 'cpu_count': os.cpu_count(), 'git_commit': commit, 'git_dirty': dirty}
 
