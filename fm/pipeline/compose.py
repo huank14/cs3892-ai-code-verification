@@ -11,6 +11,7 @@ otherwise changed.
 from __future__ import annotations
 
 import ast
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -29,6 +30,8 @@ class Contract:
     doc_indent: int             # body indentation in the contract module
     helpers_src: str            # other top-level code from the contract module
     helper_names: list[str]
+    signature_src: str = ''     # the contract's `def ...:` header (declared parameter/return types)
+    param_names: list[str] = field(default_factory=list)
     provenance: dict = field(default_factory=dict)
 
 
@@ -85,7 +88,17 @@ def load_contract(path: str | Path, entry_point: str, contract_id: str, task_id:
     return Contract(contract_id=contract_id, task_id=task_id, entry_point=entry_point,
                     source_path=str(path), docstring_src=ast.get_source_segment(src, doc.value),
                     doc_indent=fn.body[0].col_offset, helpers_src=''.join(helpers),
-                    helper_names=names, provenance=provenance or {})
+                    helper_names=names, signature_src=_header(lines, fn), param_names=_params(fn),
+                    provenance=provenance or {})
+
+
+def _header(lines: list[str], fn: ast.FunctionDef) -> str:
+    return ''.join(lines[fn.lineno - 1:fn.body[0].lineno - 1])
+
+
+def _params(fn: ast.FunctionDef) -> list[str]:
+    a = fn.args
+    return [x.arg for x in a.posonlyargs + a.args + a.kwonlyargs]
 
 
 def _reindent(literal: str, old: int, new: int) -> str:
@@ -100,8 +113,33 @@ def _reindent(literal: str, old: int, new: int) -> str:
     return '\n'.join(out)
 
 
-def compose(impl_path: str | Path, contract: Contract) -> str:
-    """Return module source: header + contract helpers + implementation with contract docstring."""
+PRE_LINE = re.compile(r'^([ \t]*)pre\s*:', re.M)
+
+
+def _add_pre(literal: str, indent: int, extra_pre: list[str]) -> str:
+    """Insert bounds as the FIRST preconditions. CrossHair evaluates `pre:` lines in order, so a
+    size bound must come before any condition that iterates over the input (e.g. all(...)),
+    otherwise the unbounded iteration is explored first and no path set is ever exhausted."""
+    q = literal[-3:]
+    if q not in ('"""', "'''"):
+        raise ComposeError('cannot add to a non-triple-quoted docstring')
+    m = PRE_LINE.search(literal)
+    if m:
+        added = ''.join(f'{m.group(1)}pre: {e}\n' for e in extra_pre)
+        return literal[:m.start()] + added + literal[m.start():]
+    added = ''.join('\n' + ' ' * indent + 'pre: ' + e for e in extra_pre)
+    return literal[:-3].rstrip() + added + '\n' + ' ' * indent + q
+
+
+def compose(impl_path: str | Path, contract: Contract, use_contract_signature: bool = False,
+            extra_pre: list[str] | None = None) -> str:
+    """Return module source: header + contract helpers + implementation with contract docstring.
+
+    use_contract_signature: replace the implementation's `def` header (annotations only; the
+        parameter names must match) with the contract's, so CrossHair draws inputs from the
+        contract's declared types.
+    extra_pre: harness-level analysis bounds appended as extra `pre:` lines (bounded verification).
+    """
     src = Path(impl_path).read_text(encoding='utf-8')
     tree = ast.parse(src)
     fn = _target(tree, contract.entry_point)
@@ -111,7 +149,10 @@ def compose(impl_path: str | Path, contract: Contract) -> str:
         raise ComposeError(f"contract helper names also defined by implementation: {sorted(clash)}")
     lines = src.splitlines(keepends=True)
     body_indent = fn.body[0].col_offset
-    new_doc = ' ' * body_indent + _reindent(contract.docstring_src, contract.doc_indent, body_indent) + '\n'
+    literal = _reindent(contract.docstring_src, contract.doc_indent, body_indent)
+    if extra_pre:
+        literal = _add_pre(literal, body_indent, extra_pre)
+    new_doc = ' ' * body_indent + literal + '\n'
     doc = _docstring_node(fn)
     if doc is not None:
         if doc.lineno == fn.lineno or len(fn.body) > 1 and fn.body[1].lineno == doc.end_lineno:
@@ -121,9 +162,17 @@ def compose(impl_path: str | Path, contract: Contract) -> str:
         if fn.body[0].lineno == fn.lineno:
             raise ComposeError('one-line function body')
         lines.insert(fn.body[0].lineno - 1, new_doc)
+    if use_contract_signature and contract.signature_src:
+        if _params(fn) != contract.param_names:
+            raise ComposeError(f'parameter names differ: {_params(fn)} vs {contract.param_names}')
+        if fn.decorator_list:
+            raise ComposeError('decorated implementation')
+        lines[fn.lineno - 1:fn.body[0].lineno - 1] = [contract.signature_src]
     header = (f"# Composed by fm/pipeline. contract={contract.contract_id} "
               f"(from {Path(contract.source_path).as_posix()}), implementation={Path(impl_path).as_posix()}\n"
-              "# The docstring below is copied verbatim from the contract source.\n")
+              "# The docstring below is copied verbatim from the contract source.\n"
+              + ("# Signature annotations taken from the contract.\n" if use_contract_signature else '')
+              + (f"# Harness analysis bound (extra pre:): {' ; '.join(extra_pre)}\n" if extra_pre else ''))
     helpers = ''
     if contract.helpers_src.strip():
         helpers = '# --- contract helpers ---\n' + contract.helpers_src.rstrip() + '\n# --- implementation ---\n'

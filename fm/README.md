@@ -30,8 +30,24 @@ re-executes every counterexample, and writes per-job JSON, raw CrossHair logs, a
 
     .venv/Scripts/python -m pipeline.make_tasks HumanEval/6          # once per task (already done for the 6 pilot tasks)
     .venv/Scripts/python -m pipeline.validate_mutants HumanEval/6     # C: check mutant witnesses
-    .venv/Scripts/python -m pipeline.run_matrix --tasks all --timeout 30 --workers 12 --out results/<run-name>
+    .venv/Scripts/python -m pipeline.run_matrix --tasks all --timeout 60 --workers 12 --mode combined --contract-signature --out results/<run-name>
+    .venv/Scripts/python -m pipeline.demo --task HumanEval/8 --contract qwen_v1_8_3 --impl reference --bounded   # live demo
     .venv/Scripts/python -m unittest discover -s pipeline/tests -t .  # pipeline self-test
+
+Analysis modes (`--mode`):
+
+- `unbounded`: the contract as written. With unbounded lists/strings CrossHair rarely finishes
+  exploring, so most checks end `Not confirmed` (11% determinate on the 38 Qwen checks at 60 s).
+- `bounded`: the task's `analysis_bound` from `task.json` (e.g. `len(l) <= 4`, identical for every
+  contract of the task) is inserted as the **first** `pre:`. Confirmations then hold only within the
+  bound. The bound must come first: CrossHair evaluates `pre:` lines in order, and a condition such as
+  `all(isinstance(x, int) for x in l)` evaluated before the bound iterates over an unbounded list.
+- `combined` (used for reported results): bounded first; unless that run already found a sound
+  rejection, an unbounded run also searches for counterexamples. A re-executed counterexample from
+  either run is a real input, so it counts; confirmation is reported as `ACCEPTED_PROVEN_BOUNDED`.
+
+`--contract-signature` analyses with the contract's declared parameter types (the HumanEval/40
+reference is annotated `l: list`, which makes CrossHair generate mixed-type lists).
 
 Task layout (`tasks/HumanEval_<n>/`): `reference.py` (canonical solution), `tests.py` (official tests),
 `task.json`, `human_contract.py` + `human_contract.md` (D), `mutants/m*.py` + `mutants/manifest.json` (C).
@@ -51,6 +67,7 @@ Verdict per contract-implementation pair (`pipeline/run_matrix.py:verdict`):
 | `REJECTED_EXCEPTION` | f raises on an input satisfying pre (re-executed) |
 | `REJECTED_NONDISCRIMINATING` | f is rejected at x, but so is the reference: the contract did not tell them apart |
 | `ACCEPTED_PROVEN` | every postcondition `Confirmed over all paths` (relative to CrossHair's model) |
+| `ACCEPTED_PROVEN_BOUNDED` | same, for all inputs within the task's `analysis_bound`; no counterexample in the unbounded search |
 | `INCONCLUSIVE` | no counterexample within budget (`Not confirmed`); not evidence of correctness |
 | `PRE_UNSAT`, `CONTRACT_INVALID`, `CONTRACT_ERROR`, `TOOL_ERROR`, `COMPOSE_ERROR` | reported separately |
 

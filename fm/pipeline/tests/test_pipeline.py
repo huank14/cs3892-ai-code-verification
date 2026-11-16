@@ -61,6 +61,20 @@ class PipelineTest(unittest.TestCase):
         with self.assertRaises(ComposeError):
             compose(self.tmp / 'clash.py', self.c)
 
+    def test_bound_is_inserted_as_first_precondition(self):
+        out = compose(self.tmp / 'wrong.py', self.c, extra_pre=['a <= 3'])
+        self.assertLess(out.index('pre: a <= 3'), out.index('pre: a >= 0 and b >= 0'))
+        self.assertIn('Harness analysis bound', out)
+
+    def test_contract_signature_replaces_annotations_only(self):
+        (self.tmp / 'untyped.py').write_text('def biggest(a, b):\n    return a if a >= b else b\n')
+        out = compose(self.tmp / 'untyped.py', self.c, use_contract_signature=True)
+        self.assertIn('def biggest(a: int, b: int) -> int:', out)
+        self.assertIn('return a if a >= b else b', out)
+        (self.tmp / 'renamed.py').write_text('def biggest(x, y):\n    return x\n')
+        with self.assertRaises(ComposeError):
+            compose(self.tmp / 'renamed.py', self.c, use_contract_signature=True)
+
     def test_classify_messages(self):
         self.assertEqual(classify('Confirmed over all paths.')['status'], 'confirmed')
         self.assertEqual(classify('Not confirmed.')['status'], 'not_confirmed')

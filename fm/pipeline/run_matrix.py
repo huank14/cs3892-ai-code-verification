@@ -136,26 +136,11 @@ def verdict(conds: dict, ch: dict, replays: list[dict]) -> tuple[str, dict]:
     return 'INCONCLUSIVE', detail            # no counterexample within budget; not a proof
 
 
-def run_job(c, impl, entry, out: Path, timeout: float) -> dict:
-    task = c.task_id.replace('/', '_')
-    name = f'{c.contract_id}__{impl["impl_id"]}'
-    mod_dir = out / 'modules' / task
-    mod_dir.mkdir(parents=True, exist_ok=True)
-    rec = {'task_id': c.task_id, 'contract_id': c.contract_id, 'impl_id': impl['impl_id'],
-           'impl_kind': impl['kind'], 'impl_source': rel(impl['path']),
-           'contract_source': rel(c.source_path),
-           'contract_provenance': c.provenance}
-    try:
-        module = mod_dir / f'{name}.py'
-        module.write_text(compose(impl['path'], c), encoding='utf-8')
-    except (ComposeError, SyntaxError) as e:
-        rec.update(verdict='COMPOSE_ERROR', error=str(e))
-        return rec
-    rec['module'] = rel(module)
+def analyse(module: Path, c, impl, entry: str, timeout: float) -> dict:
+    """crosshair check one composed module, re-execute every reported input, aggregate."""
     conds = worker('conditions', module, entry)
-    rec['conditions'] = conds
     ch = run_check(module, timeout) if conds.get('ok') and not conds.get('syntax_errors') else \
-        {'reports': [], 'exit_code': 0, 'elapsed_seconds': 0, 'skipped': True}
+        {'reports': [], 'exit_code': 0, 'elapsed_seconds': 0, 'skipped': True, 'stdout': '', 'stderr': ''}
     replays = []
     for r in ch['reports']:
         if r['status'] in ('counterexample', 'exception') and r.get('call'):
@@ -171,18 +156,82 @@ def run_job(c, impl, entry, out: Path, timeout: float) -> dict:
                 item['contract_error'] = bool(rp.get('contract_error_lines'))
                 item['discriminating'] = rp.get('reference_satisfies_contract', None)
             replays.append(item)
-    rec['crosshair'] = {k: ch.get(k) for k in ('command', 'exit_code', 'elapsed_seconds', 'reports', 'stderr')}
-    rec['replays'] = replays
-    rec['verdict'], rec['verdict_detail'] = verdict(conds, ch, replays)
-    rec['concrete'] = worker('concrete', module, entry, task_dir(c.task_id), timeout=300)
+    v, detail = verdict(conds, ch, replays)
+    return {'module': rel(module), 'conditions': conds, 'replays': replays, 'verdict': v, 'verdict_detail': detail,
+            'crosshair': {k: ch.get(k) for k in ('command', 'exit_code', 'elapsed_seconds', 'reports', 'stderr')},
+            '_log': ' '.join(ch.get('command', [])) + '\n' + (ch.get('stdout') or '') + (ch.get('stderr') or '')}
+
+
+SOUND_REJECTIONS = ('REJECTED', 'REJECTED_EXCEPTION')
+
+
+def combine(bounded: dict, unbounded: dict | None) -> str:
+    """Combined mode: a re-executed rejection from either run is sound; a confirmation only
+    holds within the bound, and only if the unbounded search found no counterexample."""
+    runs = [r for r in (bounded, unbounded) if r]
+    for r in runs:
+        if r['verdict'] in SOUND_REJECTIONS:
+            return r['verdict']
+    for r in runs:
+        if r['verdict'] == 'REJECTED_NONDISCRIMINATING':
+            return r['verdict']
+    if bounded['verdict'] == 'ACCEPTED_PROVEN':
+        return 'ACCEPTED_PROVEN_BOUNDED'
+    return bounded['verdict']
+
+
+def run_job(c, impl, entry, out: Path, timeout: float, opts: dict | None = None) -> dict:
+    """mode 'unbounded' (default), 'bounded' (task bound as first pre:), or 'combined'
+    (bounded first; if not soundly rejected, an unbounded run also searches for counterexamples)."""
+    opts = opts or {}
+    mode = opts.get('mode', 'unbounded')
+    bound = (opts.get('bounds') or {}).get(c.task_id) if mode != 'unbounded' else None
+    sig = bool(opts.get('contract_signature'))
+    task = c.task_id.replace('/', '_')
+    name = f'{c.contract_id}__{impl["impl_id"]}'
+    mod_dir = out / 'modules' / task
+    mod_dir.mkdir(parents=True, exist_ok=True)
+    rec = {'task_id': c.task_id, 'contract_id': c.contract_id, 'impl_id': impl['impl_id'],
+           'impl_kind': impl['kind'], 'impl_source': rel(impl['path']),
+           'contract_source': rel(c.source_path), 'contract_provenance': c.provenance,
+           'mode': mode, 'analysis_bound': bound, 'contract_signature': sig}
+    try:
+        plain = mod_dir / f'{name}.py'
+        plain.write_text(compose(impl['path'], c, use_contract_signature=sig), encoding='utf-8')
+        if bound:
+            bmod = mod_dir / f'{name}__bounded.py'
+            bmod.write_text(compose(impl['path'], c, use_contract_signature=sig, extra_pre=bound), encoding='utf-8')
+    except (ComposeError, SyntaxError) as e:
+        rec.update(verdict='COMPOSE_ERROR', error=str(e))
+        return rec
+    logs = out / 'logs' / task
+    logs.mkdir(parents=True, exist_ok=True)
+    runs = {}
+    if bound:
+        runs['bounded'] = analyse(bmod, c, impl, entry, timeout)
+    if mode == 'unbounded' or (mode == 'combined' and runs['bounded']['verdict'] not in SOUND_REJECTIONS):
+        runs['unbounded'] = analyse(plain, c, impl, entry, timeout)
+    for k, r in runs.items():
+        (logs / f'{name}.{k}.crosshair.txt').write_text(r.pop('_log'), encoding='utf-8')
+    primary = runs.get('bounded') or runs['unbounded']
+    # Top-level fields describe the primary analysis; `runs` keeps every analysis.
+    rec.update({k: primary[k] for k in ('module', 'conditions', 'replays', 'verdict_detail')})
+    rec['crosshair'] = dict(primary['crosshair'])
+    rec['runs'] = {k: {kk: vv for kk, vv in r.items() if kk != 'conditions'} for k, r in runs.items()}
+    if mode == 'combined':
+        rec['verdict'] = combine(runs['bounded'], runs.get('unbounded'))
+    elif mode == 'bounded':
+        rec['verdict'] = 'ACCEPTED_PROVEN_BOUNDED' if primary['verdict'] == 'ACCEPTED_PROVEN' else primary['verdict']
+    else:
+        rec['verdict'] = primary['verdict']
+    rec['crosshair']['elapsed_seconds'] = round(sum(r['crosshair']['elapsed_seconds'] or 0 for r in runs.values()), 2)
+    # The concrete (test-input) check always uses the unbounded contract.
+    rec['concrete'] = worker('concrete', plain, entry, task_dir(c.task_id), timeout=300)
     if rec['concrete'].get('ok'):
         rec['concrete'].pop('ok')
         rows = rec['concrete'].pop('rows')
         rec['concrete']['violating_inputs'] = [r for r in rows if r.get('violated_lines') or 'raised' in r]
         rec['concrete']['excluded_inputs'] = [r['input_repr'] for r in rows if not r['pre_holds']]
-    (out / 'logs' / task).mkdir(parents=True, exist_ok=True)
-    (out / 'logs' / task / f'{name}.crosshair.txt').write_text(
-        ' '.join(ch.get('command', [])) + '\n' + ch.get('stdout', '') + ch.get('stderr', ''), encoding='utf-8')
     return rec
 
 
@@ -207,6 +256,11 @@ def main(argv=None):
     ap.add_argument('--contracts', default='*', help='glob on contract id, e.g. "human" or "qwen_v2_*"')
     ap.add_argument('--samples', default=str(REPO / 'ai/analysis/samples.json'))
     ap.add_argument('--out', required=True)
+    ap.add_argument('--mode', choices=['unbounded', 'bounded', 'combined'], default='unbounded',
+                    help='bounded: task analysis_bound (task.json) as the first pre:; '
+                         'combined: bounded, then an unbounded counterexample search if not rejected')
+    ap.add_argument('--contract-signature', action='store_true',
+                    help="analyse with the contract's declared parameter types instead of the implementation's")
     a = ap.parse_args(argv)
 
     samples = json.loads(Path(a.samples).read_text(encoding='utf-8'))
@@ -214,6 +268,13 @@ def main(argv=None):
         if a.tasks == ['all'] else a.tasks
     out = Path(a.out).resolve()
     out.mkdir(parents=True, exist_ok=True)
+    opts = {'contract_signature': a.contract_signature, 'bounds': {}, 'mode': a.mode}
+    if a.mode != 'unbounded':
+        for t in tasks:
+            b = json.loads((task_dir(t) / 'task.json').read_text(encoding='utf-8')).get('analysis_bound')
+            if not b:
+                sys.exit(f'--mode {a.mode}: no analysis_bound in {task_dir(t) / "task.json"}')
+            opts['bounds'][t] = b if isinstance(b, list) else [b]
     all_jobs, inventory = [], {}
     for t in tasks:
         entry, contracts, impls = discover(t, samples)
@@ -222,13 +283,14 @@ def main(argv=None):
         all_jobs += [(c, i, entry) for c, i in plan(contracts, impls, set(a.kinds.split(',')))]
     meta = {'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'argv': sys.argv,
             'per_condition_timeout': a.timeout, 'workers': a.workers, 'jobs': len(all_jobs),
+            'mode': a.mode, 'analysis_bounds': opts['bounds'], 'contract_signature': a.contract_signature,
             'inventory': inventory, 'versions': versions()}
     (out / 'run_meta.json').write_text(json.dumps(meta, indent=2), encoding='utf-8')
     print(f'{len(all_jobs)} jobs across {len(tasks)} task(s); timeout {a.timeout}s/condition; {a.workers} workers',
           flush=True)
     results = []
     with ThreadPoolExecutor(a.workers) as ex, open(out / 'results.jsonl', 'w', encoding='utf-8') as fh:
-        futs = {ex.submit(run_job, c, i, e, out, a.timeout): (c, i) for c, i, e in all_jobs}
+        futs = {ex.submit(run_job, c, i, e, out, a.timeout, opts): (c, i) for c, i, e in all_jobs}
         for n, f in enumerate(as_completed(futs), 1):
             c, i = futs[f]
             try:

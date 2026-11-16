@@ -20,6 +20,10 @@ from collections import defaultdict
 from pathlib import Path
 
 
+DETERMINATE = {'REJECTED', 'REJECTED_EXCEPTION', 'REJECTED_NONDISCRIMINATING', 'ACCEPTED_PROVEN',
+               'ACCEPTED_PROVEN_BOUNDED'}
+
+
 def summarize(out: Path) -> None:
     out = Path(out)
     recs = [json.loads(l) for l in (out / 'results.jsonl').read_text(encoding='utf-8').splitlines() if l.strip()]
@@ -44,9 +48,9 @@ def summarize(out: Path) -> None:
             'mutants': len(muts), 'killed': killed,
             'killed_by_exception': count('REJECTED_EXCEPTION'),
             'nondiscriminating': count('REJECTED_NONDISCRIMINATING'),
-            'accepted_proven': count('ACCEPTED_PROVEN'), 'inconclusive': count('INCONCLUSIVE'),
+            'accepted_proven': count('ACCEPTED_PROVEN') + count('ACCEPTED_PROVEN_BOUNDED'), 'inconclusive': count('INCONCLUSIVE'),
             'errors': sum(r['verdict'] not in ('REJECTED', 'REJECTED_EXCEPTION', 'REJECTED_NONDISCRIMINATING',
-                                               'ACCEPTED_PROVEN', 'INCONCLUSIVE')
+                                               'ACCEPTED_PROVEN', 'ACCEPTED_PROVEN_BOUNDED', 'INCONCLUSIVE')
                           for r in muts),
             'concrete_killed': sum(bool(conc(r).get('post_violations')) for r in muts),
             'mutation_score': '' if not muts else f'{killed / len(muts):.2f}',
@@ -80,6 +84,16 @@ def summarize(out: Path) -> None:
     for r in recs:
         verdicts[r['verdict']] += 1
     md += ['', '## Verdict counts', ''] + [f'- {k}: {v}' for k, v in sorted(verdicts.items())]
+    # Proposal criterion: share of checks with a determinate CrossHair verdict
+    # (a re-executed counterexample, or confirmation over all paths).
+    md += ['', '## Determinate verdicts (counterexample or confirmed over all paths)', '']
+    groups = {'all jobs': recs, 'contract x mutant': [r for r in recs if r['impl_kind'] == 'mutant'],
+              'contract x reference': [r for r in recs if r['impl_kind'] == 'reference'],
+              'contract x Qwen implementation': [r for r in recs if r['impl_kind'] == 'qwen']}
+    for name, rs in groups.items():
+        if rs:
+            d = sum(r['verdict'] in DETERMINATE for r in rs)
+            md.append(f'- {name}: {d}/{len(rs)} = {d / len(rs):.0%}')
     (out / 'summary.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
     print('\n'.join(md))
 

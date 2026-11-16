@@ -2,5 +2,9 @@
   "task_id": "HumanEval/40",
   "entry_point": "triples_sum_to_zero",
   "source": "openai/human-eval",
-  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz"
+  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz",
+  "analysis_bound": [
+    "len(l) <= 4"
+  ],
+  "analysis_bound_note": "Harness-level small-scope bound, prepended as the first pre: for every contract in --bounded runs. Verdicts then hold only for inputs within the bound."
 }

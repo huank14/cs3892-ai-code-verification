@@ -2,5 +2,9 @@
   "task_id": "HumanEval/6",
   "entry_point": "parse_nested_parens",
   "source": "openai/human-eval",
-  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz"
+  "dataset_file": "ai/data/eval-only-human-eval-pilot.jsonl.gz",
+  "analysis_bound": [
+    "len(paren_string) <= 4"
+  ],
+  "analysis_bound_note": "Harness-level small-scope bound, prepended as the first pre: for every contract in --bounded runs. Verdicts then hold only for inputs within the bound."
 }
