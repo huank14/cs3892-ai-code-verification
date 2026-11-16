@@ -1,8 +1,8 @@
 # Evaluation protocol: from CrossHair verdicts to reported numbers
 
 **Status: DRAFT for sign-off**, Zoey (C), 16 November 2026.
-Owner: C (evaluation). Needs agreement from Bingsong (B, verdicts/pipeline) and Keyu (D,
-human contracts/input domains) before any mutation score is reported.
+Owner: C (evaluation, input domains, mutants). Needs agreement from Bingsong (B,
+verdicts/pipeline) and Keyu (D, human contracts) before any mutation score is reported.
 
 | Sign-off | Name | Date |
 |---|---|---|
@@ -20,14 +20,14 @@ listed in Section 9.
 | Symbol | Meaning | Where |
 |---|---|---|
 | T | a HumanEval task | `fm/tasks/HumanEval_<n>/` |
-| D_T | legal input domain of T (fixed by C with D, from the task text) | `input_domain.md` |
+| D_T | legal input domain of T (fixed by C from the task text) | `input_domain.md`; executable `input_domain.py:in_domain` |
 | ref_T | canonical HumanEval solution | `reference.py` |
 | M_T | validated mutants of T (VALID in `validation.json`) | `mutants/` |
 | c | a contract: PEP 316 `pre:` / `post:` in a docstring | Qwen samples, `human_contract.py` |
 | B_T | analysis bound, inserted as the first `pre:` in bounded runs | `task.json` |
 
 Every D_T must contain all official-test inputs of T, and every mutant witness must lie in
-D_T (checked when D_T is written; done for HumanEval/6).
+D_T (checked when D_T is written; done for all six pilot tasks).
 
 A **sample** is one attempted model response (one model, one prompt version, one task, one
 of three conversations). Every sample is evaluated, whether or not its contract parses.
@@ -43,7 +43,7 @@ afterwards to improve or worsen any contract's score:
   Z3 versions (recorded in `run_meta.json`);
 - this protocol.
 
-Pilot disclosure: for the six pilot tasks, the mutants and the HumanEval/6 domain were
+Pilot disclosure: for the six pilot tasks, the mutants and the input domains were
 written after the AI and FM pilot reports were available (no contract was run against the
 mutants before they were frozen). For the final 30 tasks, D_T and M_T are written before
 any contract is run on those tasks.
@@ -70,9 +70,9 @@ over-restrictive.
 Examples (pilot, from `fm/MILESTONE_FM.md`):
 - `qwen_v2_6_1` rejects ref on `''`. `''` is legal (`HumanEval_6/input_domain.md`), so
   `OVER_RESTRICTIVE`.
-- `qwen_v2_0_3` rejects the correct `True` on an official-test input: `OVER_RESTRICTIVE`
-  regardless of the pending decision on `threshold = 0`. Its `threshold > 0` precondition is
-  `DOMAIN_EXCLUDING` only if D for HumanEval/0 admits `threshold = 0`.
+- `qwen_v2_0_3` rejects the correct `True` on an official-test input: `OVER_RESTRICTIVE`.
+  Its `threshold > 0` precondition also excludes the legal `threshold = 0`
+  (`HumanEval_0/input_domain.md`): `DOMAIN_EXCLUDING`.
 - `qwen_v1_8_3` rejects the correct `(0, 0)` for `[0]`: `OVER_RESTRICTIVE`.
 
 ## 4. Contract-mutant verdict to killed / not killed
@@ -176,7 +176,7 @@ milestone, but the success criterion is the contract-mutant rate.
 
 | # | Change | Who |
 |---|---|---|
-| 1 | Machine-readable D_T predicate per task (from `input_domain.md`), and `in_domain` recorded for every replayed input | C writes predicates, B wires into replay |
+| 1 | Machine-readable D_T predicate per task, and `in_domain` recorded for every replayed input | C: done (`tasks/HumanEval_<n>/input_domain.py`, function `in_domain` with the task's parameters); B: call it in replay |
 | 2 | `over_restrictive` only from in-domain reference rejections (now: any `REJECTED` on ref) | B |
 | 3 | Summary includes generation-failure samples (MS = 0) and reports `MS_eff`, `useful`, `domain_excluding` per contract | C (aggregation script on `results.jsonl` + `samples.json`) |
 | 4 | Per model/prompt table: medians, means, gap to human, paired d(T) | C |
@@ -193,8 +193,9 @@ milestone, but the success criterion is the contract-mutant rate.
 4. **Bounded acceptance in the 80% criterion.** Proposed: counted as determinate, disclosed,
    and the unbounded rate reported beside it.
 5. **Final prompt version** for both models (V2 was designed after inspecting V1).
-6. **Input domains for HumanEval/0, /8, /12, /28, /40** (C with D): open items are
-   `threshold = 0` and negative thresholds on /0 and the empty list on /40.
+
+Resolved: input domains for the six pilot tasks are fixed by C in each task's
+`input_domain.md` (16 November 2026).
 
 ## 11. Limits that the report must state
 

@@ -2,6 +2,7 @@
 
 Owner: Zoey (C). Decided 16 November 2026. Applies to the human reference contract,
 mutant witnesses, and the interpretation of every contract verdict on this task.
+Executable form: `input_domain.py` (`in_domain(paren_string)`).
 
 ## Legal inputs
 
