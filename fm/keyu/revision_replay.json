@@ -1,0 +1,547 @@
+{
+  "kind": "Concrete replay of archived symbolic counterexamples; no new search",
+  "checks": 36,
+  "passed": 36,
+  "rows": [
+    {
+      "task_id": "HumanEval/12",
+      "mutant_id": "mutant_m2",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "longest([])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/12",
+      "mutant_id": "mutant_m6",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "longest([''])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/12",
+      "mutant_id": "mutant_m1",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "longest(['\\x00', '\\x01'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/12",
+      "mutant_id": "mutant_m4",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "longest(['\\x00', '\\x00\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/12",
+      "mutant_id": "mutant_m5",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "longest(['', '\\x02', '\\x00\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/12",
+      "mutant_id": "mutant_m3",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "longest(['', '\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/28",
+      "mutant_id": "mutant_m4",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "concatenate([])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/28",
+      "mutant_id": "mutant_m2",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "concatenate(['', ''])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/28",
+      "mutant_id": "mutant_m1",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "concatenate(['\\x01', '\\x01\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/28",
+      "mutant_id": "mutant_m3",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "concatenate(['\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/40",
+      "mutant_id": "mutant_m3",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "triples_sum_to_zero([-20896, 12879, 8018, -20897])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/40",
+      "mutant_id": "mutant_m2",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "triples_sum_to_zero([-15809, 2930, -15810, 12879])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/28",
+      "mutant_id": "mutant_m6",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "concatenate(['\\x01', '\\x00\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/40",
+      "mutant_id": "mutant_m4",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "triples_sum_to_zero([47925, -47925])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/40",
+      "mutant_id": "mutant_m1",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "triples_sum_to_zero([0])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/28",
+      "mutant_id": "mutant_m5",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "concatenate(['\\x00', '\\x04', '\\x00'])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/40",
+      "mutant_id": "mutant_m5",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "triples_sum_to_zero([-47925, 30056, 17869])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/40",
+      "mutant_id": "mutant_m6",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "triples_sum_to_zero([-25760, 12880, 12880])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "mutant_id": "mutant_m3",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "parse_nested_parens('()')",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "mutant_id": "mutant_m1",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "sum_product([2])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "mutant_id": "mutant_m2",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "sum_product([])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "mutant_id": "mutant_m3",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "sum_product([2])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "mutant_id": "mutant_m4",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "sum_product([-1])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "mutant_id": "mutant_m5",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "sum_product([-1])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "mutant_id": "mutant_m1",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "parse_nested_parens('()')",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "mutant_id": "mutant_m2",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "parse_nested_parens('()')",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "mutant_id": "mutant_m5",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "parse_nested_parens('')",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "mutant_id": "mutant_m6",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "sum_product([])",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "mutant_id": "mutant_m4",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "parse_nested_parens('()()')",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "mutant_id": "mutant_m6",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "parse_nested_parens('()')",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/0",
+      "mutant_id": "mutant_m4",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "has_close_elements([0.0], 0.5)",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/0",
+      "mutant_id": "mutant_m6",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "has_close_elements([0.5, -0.125], 1.25)",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/0",
+      "mutant_id": "mutant_m1",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "has_close_elements([0.0, 0.0], 0.0)",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/0",
+      "mutant_id": "mutant_m5",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "has_close_elements([0.0, 0.0], 0.5)",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/0",
+      "mutant_id": "mutant_m2",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "has_close_elements([0.0, -0.5], 0.0)",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/0",
+      "mutant_id": "mutant_m3",
+      "archived_verdict": "REJECTED",
+      "passed": true,
+      "calls": [
+        {
+          "mode": "bounded",
+          "call": "has_close_elements([0.0, 0.5, 0.0], 0.25)",
+          "in_domain": true,
+          "replay_confirmed": true,
+          "same_recorded_returns": true
+        }
+      ]
+    }
+  ]
+}

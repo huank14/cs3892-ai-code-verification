@@ -1,0 +1,7 @@
+task,contract,reference_verdict,reference_concrete_violations,reference_concrete_pre_excluded,over_restrictive,mutants,killed,killed_by_exception,nondiscriminating,accepted_proven,inconclusive,errors,concrete_killed,mutation_score,self_impl_verdict,human_vs_qwen_impls
+HumanEval/0,human,,,,False,6,6,0,0,0,0,0,6,1.00,,
+HumanEval/12,human,,,,False,6,6,0,0,0,0,0,6,1.00,,
+HumanEval/28,human,,,,False,6,6,0,0,0,0,0,6,1.00,,
+HumanEval/40,human,,,,False,6,6,0,0,0,0,0,6,1.00,,
+HumanEval/6,human,,,,False,6,6,0,0,0,0,0,6,1.00,,
+HumanEval/8,human,,,,False,6,6,0,0,0,0,0,6,1.00,,

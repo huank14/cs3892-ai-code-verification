@@ -1,0 +1,69 @@
+{
+  "original_run_base": "80429feb9e2114280323ff9f53eb3f622c0c26af",
+  "contracts": [
+    {
+      "task_id": "HumanEval/0",
+      "path": "fm/tasks/HumanEval_0/human_contract.py",
+      "change": "Removed one non-executable provenance comment; executable source and PEP 316 docstrings unchanged.",
+      "before_sha256": "4476ad999560d1901f0af65d96c6d285a2d8ba979a3728e244e8f1c23d36b44e",
+      "after_sha256": "295f350fdaf7e1c16828db51a521f046daa474a69c186ef7c2bf8c5df0f11203",
+      "ast_identical": true,
+      "semantic_ast_sha256": "96a28f132dcba395bcba59ca318ffe03d090c99e75285688fbd21e7c86a1ec3e"
+    },
+    {
+      "task_id": "HumanEval/6",
+      "path": "fm/tasks/HumanEval_6/human_contract.py",
+      "change": "Removed one non-executable provenance comment; executable source and PEP 316 docstrings unchanged.",
+      "before_sha256": "0b7925e8e13a9a107eb6f7dd1a00de52e86bc4444a8c5efe09409da70651a195",
+      "after_sha256": "fb19fd14ed64e93859cc467815e3b36ad8284fa6b4154ecdc3c1221b39e710fd",
+      "ast_identical": true,
+      "semantic_ast_sha256": "d4ccc45137868452630f94782186fc8466b2f6ef3f899ea351632e3993ae620e"
+    },
+    {
+      "task_id": "HumanEval/8",
+      "path": "fm/tasks/HumanEval_8/human_contract.py",
+      "change": "Removed one non-executable provenance comment; executable source and PEP 316 docstrings unchanged.",
+      "before_sha256": "e972ac4330890aea9bd3a2dfbd26da74898614bf90fda72cbd285a00abf6c8d2",
+      "after_sha256": "3ead86ee690750494b5263448252d82cc2f4a55c7ac65f2b102ef15ec0de7a1e",
+      "ast_identical": true,
+      "semantic_ast_sha256": "6bf2e3570e212b8b154916a2c199165c6496fb697f1cd51a14aebe3a158e90cf"
+    },
+    {
+      "task_id": "HumanEval/12",
+      "path": "fm/tasks/HumanEval_12/human_contract.py",
+      "change": "Removed one non-executable provenance comment; executable source and PEP 316 docstrings unchanged.",
+      "before_sha256": "ff82cd0c82f8faa8fc20fed9fa18a5ff4434e7fe78d468a992378fe86089e8af",
+      "after_sha256": "def8ba08e79cb53da7f321bf41f9f870859b22e8a79f46d613d8d8cf424ac394",
+      "ast_identical": true,
+      "semantic_ast_sha256": "b903ba557c7dccd6d94cbf7ddc440db933162dbba818773ede73f2ce21aaa6c2"
+    },
+    {
+      "task_id": "HumanEval/28",
+      "path": "fm/tasks/HumanEval_28/human_contract.py",
+      "change": "Removed one non-executable provenance comment; executable source and PEP 316 docstrings unchanged.",
+      "before_sha256": "edf04123a73b1a1235a2ced4793b78489ba41bf75bab3238242177b5dbae0ace",
+      "after_sha256": "283367b1ed55eb4d4d7b597e2eec28338734ada8380e86aab092b2ee20cb88a4",
+      "ast_identical": true,
+      "semantic_ast_sha256": "f1a5d9ac5e703d129d351f9a9dcfa7c0237e027e403433f66d229e4e3236d47c"
+    },
+    {
+      "task_id": "HumanEval/40",
+      "path": "fm/tasks/HumanEval_40/human_contract.py",
+      "change": "Removed one non-executable provenance comment; executable source and PEP 316 docstrings unchanged.",
+      "before_sha256": "f5b4b357387b499968a5078d9aa1f15362dbc7cab53a74caed7682511a3c9903",
+      "after_sha256": "c2bff8509c565ef111f5506d4e65be800444eebf0dee63331cca6be8f669969a",
+      "ast_identical": true,
+      "semantic_ast_sha256": "ac718a0633f8a1f30047e1aefa30b80243f2e658b554c64c6834bf7e9511a448"
+    }
+  ],
+  "other_frozen_source_hash_mismatches": [],
+  "raw_pipeline_files_unchanged": true,
+  "scope_note": "Generated composed modules omitted. They are regenerated in temporary directories for replay; no new symbolic experiment is claimed.",
+  "final_live_head_checked": "80429feb9e2114280323ff9f53eb3f622c0c26af",
+  "retained_original_evidence_files_verified_identical": 63,
+  "fresh_archived_witness_replays": {
+    "checks": 36,
+    "passed": 36,
+    "file": "revision_replay.json"
+  }
+}
