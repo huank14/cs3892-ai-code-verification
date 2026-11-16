@@ -1,0 +1,5 @@
+C:\dev-tools\cs3892-work\repo\fm\.venv\Scripts\python.exe -m crosshair check C:\dev-tools\cs3892-work\repo\fm\results\qwen-pilot-combined-t60\modules\HumanEval_0\qwen_v2_0_3__qwen_v2_0_3_impl__bounded.py --analysis_kind=PEP316 --report_all --per_condition_timeout=60.0
+C:\dev-tools\cs3892-work\repo\fm\results\qwen-pilot-combined-t60\modules\HumanEval_0\qwen_v2_0_3__qwen_v2_0_3_impl__bounded.py:22: info: Not confirmed.
+C:\dev-tools\cs3892-work\repo\fm\results\qwen-pilot-combined-t60\modules\HumanEval_0\qwen_v2_0_3__qwen_v2_0_3_impl__bounded.py:23: info: Not confirmed.
+C:\dev-tools\cs3892-work\repo\fm\results\qwen-pilot-combined-t60\modules\HumanEval_0\qwen_v2_0_3__qwen_v2_0_3_impl__bounded.py:24: error: false when calling has_close_elements([float("-inf"), float("-inf")], 2.225073858507202e-308) (which returns False)
+C:\dev-tools\cs3892-work\repo\fm\results\qwen-pilot-combined-t60\modules\HumanEval_0\qwen_v2_0_3__qwen_v2_0_3_impl__bounded.py:25: info: Not confirmed.

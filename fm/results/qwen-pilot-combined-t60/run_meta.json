@@ -1,0 +1,152 @@
+{
+  "started_utc": "2026-11-16T02:54:44Z",
+  "argv": [
+    "C:\\dev-tools\\cs3892-work\\repo\\fm\\pipeline\\run_matrix.py",
+    "--tasks",
+    "all",
+    "--kinds",
+    "reference,self",
+    "--timeout",
+    "60",
+    "--workers",
+    "16",
+    "--mode",
+    "combined",
+    "--contract-signature",
+    "--out",
+    "results/qwen-pilot-combined-t60"
+  ],
+  "per_condition_timeout": 60.0,
+  "workers": 16,
+  "jobs": 38,
+  "mode": "combined",
+  "analysis_bounds": {
+    "HumanEval/0": [
+      "len(numbers) <= 3"
+    ],
+    "HumanEval/12": [
+      "len(strings) <= 3 and all(len(s) <= 3 for s in strings)"
+    ],
+    "HumanEval/28": [
+      "len(strings) <= 3 and all(len(s) <= 3 for s in strings)"
+    ],
+    "HumanEval/40": [
+      "len(l) <= 4"
+    ],
+    "HumanEval/6": [
+      "len(paren_string) <= 4"
+    ],
+    "HumanEval/8": [
+      "len(numbers) <= 4"
+    ]
+  },
+  "contract_signature": true,
+  "inventory": {
+    "HumanEval/0": {
+      "contracts": [
+        "qwen_v2_0_2",
+        "qwen_v2_0_3"
+      ],
+      "implementations": [
+        "reference",
+        "qwen_v1_0_1_impl",
+        "qwen_v1_0_2_impl",
+        "qwen_v1_0_3_impl",
+        "qwen_v2_0_1_impl",
+        "qwen_v2_0_2_impl",
+        "qwen_v2_0_3_impl"
+      ]
+    },
+    "HumanEval/12": {
+      "contracts": [
+        "qwen_v2_12_2",
+        "qwen_v2_12_3"
+      ],
+      "implementations": [
+        "reference",
+        "qwen_v1_12_1_impl",
+        "qwen_v1_12_2_impl",
+        "qwen_v1_12_3_impl",
+        "qwen_v2_12_1_impl",
+        "qwen_v2_12_2_impl",
+        "qwen_v2_12_3_impl"
+      ]
+    },
+    "HumanEval/28": {
+      "contracts": [
+        "qwen_v1_28_1",
+        "qwen_v1_28_2",
+        "qwen_v1_28_3",
+        "qwen_v2_28_1",
+        "qwen_v2_28_2",
+        "qwen_v2_28_3"
+      ],
+      "implementations": [
+        "reference",
+        "qwen_v1_28_1_impl",
+        "qwen_v1_28_2_impl",
+        "qwen_v1_28_3_impl",
+        "qwen_v2_28_1_impl",
+        "qwen_v2_28_2_impl",
+        "qwen_v2_28_3_impl"
+      ]
+    },
+    "HumanEval/40": {
+      "contracts": [
+        "qwen_v1_40_2",
+        "qwen_v2_40_1",
+        "qwen_v2_40_2",
+        "qwen_v2_40_3"
+      ],
+      "implementations": [
+        "reference",
+        "qwen_v1_40_1_impl",
+        "qwen_v1_40_2_impl",
+        "qwen_v1_40_3_impl",
+        "qwen_v2_40_1_impl",
+        "qwen_v2_40_2_impl",
+        "qwen_v2_40_3_impl"
+      ]
+    },
+    "HumanEval/6": {
+      "contracts": [
+        "qwen_v2_6_1"
+      ],
+      "implementations": [
+        "reference",
+        "qwen_v1_6_1_impl",
+        "qwen_v1_6_2_impl",
+        "qwen_v1_6_3_impl",
+        "qwen_v2_6_1_impl",
+        "qwen_v2_6_2_impl",
+        "qwen_v2_6_3_impl"
+      ]
+    },
+    "HumanEval/8": {
+      "contracts": [
+        "qwen_v1_8_2",
+        "qwen_v1_8_3",
+        "qwen_v2_8_2",
+        "qwen_v2_8_3"
+      ],
+      "implementations": [
+        "reference",
+        "qwen_v1_8_1_impl",
+        "qwen_v1_8_2_impl",
+        "qwen_v1_8_3_impl",
+        "qwen_v2_8_2_impl",
+        "qwen_v2_8_3_impl"
+      ]
+    }
+  },
+  "versions": {
+    "python": "3.13.5 (main, Jul 23 2025, 00:30:06) [MSC v.1944 64 bit (AMD64)]",
+    "crosshair": "0.0.110",
+    "z3": "5.1.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu_count": 28,
+    "git_commit": "003244168b0b0fcc77437a428e5cedf2e3eb4d8f (git archive)",
+    "git_dirty": null
+  },
+  "finished_utc": "2026-11-16T03:08:03Z"
+}

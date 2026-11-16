@@ -37,7 +37,7 @@ re-executes every counterexample, and writes per-job JSON, raw CrossHair logs, a
 Analysis modes (`--mode`):
 
 - `unbounded`: the contract as written. With unbounded lists/strings CrossHair rarely finishes
-  exploring, so most checks end `Not confirmed` (11% determinate on the 38 Qwen checks at 60 s).
+  exploring, so most checks end `Not confirmed` (11% determinate on the 38 Qwen checks at 60 s; 84% in `combined` mode).
 - `bounded`: the task's `analysis_bound` from `task.json` (e.g. `len(l) <= 4`, identical for every
   contract of the task) is inserted as the **first** `pre:`. Confirmations then hold only within the
   bound. The bound must come first: CrossHair evaluates `pre:` lines in order, and a condition such as
