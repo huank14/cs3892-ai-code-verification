@@ -6,8 +6,10 @@ Definitions (also on the slides):
                       re-executing m(x) reproduces the violation, and post_c(x, ref(x)) holds
                       (the contract tells m apart from the reference at x; verdict REJECTED).
     MS(c) = |{m in M : killed(c, m)}| / |M|; contracts that reject the reference are flagged.
-  A contract that rejects the reference implementation (REJECTED on `reference`, or a post
-  violation on an official-test input) is counted as over-restrictive, not as strong.
+  A contract is over-restrictive if it rejects the reference on a legal input (EVALUATION_PROTOCOL
+  Section 3): a re-executed counterexample x with in_domain(x), or a post violation / contract
+  error on an official-test or witness input. Rejections of the reference outside D_T are listed
+  as `constrains_illegal_inputs`. MS_eff = 0 for over-restrictive contracts, else MS.
   REJECTED_EXCEPTION (mutant raises on a valid input) and INCONCLUSIVE are reported separately.
 Usage: python -m pipeline.summarize results/<run>
 """
@@ -36,15 +38,25 @@ def summarize(out: Path) -> None:
         muts = [r for r in rs if r['impl_kind'] == 'mutant']
         conc = lambda r: r.get('concrete', {}) or {}
         ref_conc_bad = bool(ref and (conc(ref).get('post_violations') or conc(ref).get('contract_errors')))
-        over = bool(ref and (ref['verdict'] == 'REJECTED' or ref_conc_bad))
+        ref_cex = [x for run in ref.get('runs', {}).values() for x in run.get('replays', [])
+                   if x.get('confirmed')] if ref else []
+        # in_domain None (task has no predicate) counts as legal: conservative.
+        legal_rej = [x for x in ref_cex if x.get('in_domain') is not False]
+        illegal_rej = [x for x in ref_cex if x.get('in_domain') is False]
+        over = bool(ref and (legal_rej or ref_conc_bad))
         count = lambda v: sum(r['verdict'] == v for r in muts)
         killed = count('REJECTED')
+        kill_in_domain = sum(r['verdict'] == 'REJECTED' and any(
+            x.get('confirmed') and x.get('discriminating') is not False and x.get('in_domain') is not False
+            for run in r.get('runs', {}).values() for x in run.get('replays', [])) for r in muts)
         row = {
             'task': task, 'contract': cid,
             'reference_verdict': ref['verdict'] if ref else '',
             'reference_concrete_violations': conc(ref).get('post_violations', '') if ref else '',
             'reference_concrete_pre_excluded': conc(ref).get('pre_excluded', '') if ref else '',
             'over_restrictive': over,
+            'constrains_illegal_inputs': bool(illegal_rej),
+            'domain_excluding': bool(ref and conc(ref).get('pre_excluded')),
             'mutants': len(muts), 'killed': killed,
             'killed_by_exception': count('REJECTED_EXCEPTION'),
             'nondiscriminating': count('REJECTED_NONDISCRIMINATING'),
@@ -54,6 +66,8 @@ def summarize(out: Path) -> None:
                           for r in muts),
             'concrete_killed': sum(bool(conc(r).get('post_violations')) for r in muts),
             'mutation_score': '' if not muts else f'{killed / len(muts):.2f}',
+            'mutation_score_eff': '' if not muts else f'{0 if over else killed / len(muts):.2f}',
+            'killed_in_domain': kill_in_domain,
             'self_impl_verdict': next((r['verdict'] for r in rs if r['impl_kind'] == 'qwen'
                                        and r['impl_id'] == cid + '_impl'), ''),
         }
@@ -69,13 +83,17 @@ def summarize(out: Path) -> None:
         w.writerows(rows)
     md = ['# Verification summary', '', f'Source: `{(out / "results.jsonl").name}` ({len(recs)} jobs). '
           'MS = killed / mutants (symbolic, re-executed, discriminating against the reference). '
-          'Over-restrictive = the contract rejects the reference (symbolically or on an official-test input).', '',
-          '| task | contract | reference | over-restrictive | killed / mutants | exc | non-discr. | proven-accepted | '
-          'inconclusive | err | concrete kills | MS |', '|' + '---|' * 12]
+          'Over-restrictive = the contract rejects the reference on a legal input (symbolic x in D_T, or an '
+          'official-test / witness input). Dom-excl = the precondition excludes an official-test input. '
+          'MS_eff = 0 if over-restrictive, else MS. In-D kills = kills whose input is in D_T.', '',
+          '| task | contract | reference | over-restrictive | dom-excl | killed / mutants | in-D kills | exc | non-discr. | '
+          'proven-accepted | inconclusive | err | concrete kills | MS | MS_eff |', '|' + '---|' * 15]
     for r in rows:
         md.append(f"| {r['task']} | {r['contract']} | {r['reference_verdict']} | {'yes' if r['over_restrictive'] else ''} | "
-                  f"{r['killed']} / {r['mutants']} | {r['killed_by_exception']} | {r['nondiscriminating']} | {r['accepted_proven']} | "
-                  f"{r['inconclusive']} | {r['errors']} | {r['concrete_killed']} | {r['mutation_score']} |")
+                  f"{'yes' if r['domain_excluding'] else ''} | {r['killed']} / {r['mutants']} | {r['killed_in_domain']} | "
+                  f"{r['killed_by_exception']} | {r['nondiscriminating']} | {r['accepted_proven']} | "
+                  f"{r['inconclusive']} | {r['errors']} | {r['concrete_killed']} | {r['mutation_score']} | "
+                  f"{r['mutation_score_eff']} |")
     human = [r for r in rows if r.get('human_vs_qwen_impls')]
     if human:
         md += ['', '## Human reference contract vs. Qwen implementations', '']

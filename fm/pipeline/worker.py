@@ -2,7 +2,9 @@
 
 Modes (JSON on stdout):
   conditions MODULE ENTRY            -> parsed pre/post conditions with line numbers
-  replay     MODULE ENTRY CALL       -> re-execute a CrossHair call string, evaluate pre/post
+  replay     MODULE ENTRY CALL [REFERENCE] [--domain=INPUT_DOMAIN_PY]
+                                     -> re-execute a CrossHair call string, evaluate pre/post;
+                                        with --domain, also record in_domain(x) for the task's D_T
   concrete   MODULE ENTRY TASK_DIR   -> evaluate pre/post on official-test inputs (+ witness inputs)
 
 Only run on reviewed code: this is process isolation, not a security sandbox.
@@ -89,14 +91,26 @@ def mode_conditions(module, entry):
     return describe(conditions_of(fn))
 
 
-def mode_replay(module, entry, call, reference=None):
+def in_domain(domain, args: list, kwargs: dict):
+    """D_T membership of an input (tasks/<T>/input_domain.py:in_domain); None if no predicate."""
+    if not domain or not Path(domain).exists():
+        return None
+    try:
+        return bool(load(domain, '_domain').in_domain(*copy.deepcopy(args), **copy.deepcopy(kwargs)))
+    except Exception as e:
+        return f'error: {type(e).__name__}: {e}'
+
+
+def mode_replay(module, entry, call, reference=None, domain=None):
     """Re-execute; with `reference`, also check the reference output against the same contract
     at the same input (a kill only discriminates if the reference satisfies the contract there)."""
     mod = load(module, '_under_test')
     fn = getattr(mod, entry)
     conds = conditions_of(fn)
     args, kwargs = parse_call(call, entry, dict(vars(mod)))
+    dom = in_domain(domain, args, kwargs)
     out = check_input(fn, conds, copy.deepcopy(args), copy.deepcopy(kwargs))
+    out['in_domain'] = dom
     if reference:
         ref = getattr(load(reference, '_reference'), entry)
         r = check_input(ref, conds, args, kwargs)
@@ -154,8 +168,10 @@ def mode_concrete(module, entry, task_dir):
 
 def main(argv):
     mode, *rest = argv
+    kw = {a.split('=', 1)[0][2:]: a.split('=', 1)[1] for a in rest if a.startswith('--')}
+    rest = [a for a in rest if not a.startswith('--')]
     try:
-        out = {'conditions': mode_conditions, 'replay': mode_replay, 'concrete': mode_concrete}[mode](*rest)
+        out = {'conditions': mode_conditions, 'replay': mode_replay, 'concrete': mode_concrete}[mode](*rest, **kw)
         out['ok'] = True
     except Exception as e:
         out = {'ok': False, 'error': f'{type(e).__name__}: {e}'}

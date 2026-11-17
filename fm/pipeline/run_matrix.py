@@ -145,8 +145,9 @@ def analyse(module: Path, c, impl, entry: str, timeout: float) -> dict:
     for r in ch['reports']:
         if r['status'] in ('counterexample', 'exception') and r.get('call'):
             extra = [task_dir(c.task_id) / 'reference.py'] if impl['kind'] != 'reference' else []
-            rp = worker('replay', module, entry, r['call'], *extra)
-            item = {'report': r, 'replay': rp, 'confirmed': False}
+            rp = worker('replay', module, entry, r['call'], *extra,
+                        f"--domain={task_dir(c.task_id) / 'input_domain.py'}")
+            item = {'report': r, 'replay': rp, 'confirmed': False, 'in_domain': rp.get('in_domain')}
             if rp.get('ok') and rp.get('pre_holds'):
                 if r['status'] == 'counterexample':
                     item['confirmed'] = bool(rp.get('violated_lines'))
