@@ -31,7 +31,7 @@ re-executes every counterexample, and writes per-job JSON, raw CrossHair logs, a
     .venv/Scripts/python -m pipeline.make_tasks HumanEval/6          # once per task (already done for the 6 pilot tasks)
     .venv/Scripts/python -m pipeline.validate_mutants HumanEval/6     # C: check mutant witnesses
     .venv/Scripts/python -m pipeline.run_matrix --tasks all --timeout 60 --workers 12 --mode combined --contract-signature --out results/<run-name>
-    .venv/Scripts/python -m pipeline.demo --task HumanEval/8 --contract qwen_v1_8_3 --impl reference --bounded   # live demo
+    .venv/Scripts/python -m pipeline.demo --task HumanEval/40 --contract qwen_v1_40_2,human --impl mutant_m4 --bounded   # live demo
     .venv/Scripts/python -m unittest discover -s pipeline/tests -t .  # pipeline self-test
 
 Analysis modes (`--mode`):

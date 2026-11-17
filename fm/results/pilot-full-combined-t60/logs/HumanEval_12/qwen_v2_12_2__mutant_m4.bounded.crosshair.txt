@@ -1,0 +1,5 @@
+C:\dev-tools\cs3892-work\repo\fm\.venv\Scripts\python.exe -m crosshair check C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_12\qwen_v2_12_2__mutant_m4__bounded.py --analysis_kind=PEP316 --report_all --per_condition_timeout=60.0
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_12\qwen_v2_12_2__mutant_m4__bounded.py:28: info: Confirmed over all paths.
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_12\qwen_v2_12_2__mutant_m4__bounded.py:29: info: Confirmed over all paths.
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_12\qwen_v2_12_2__mutant_m4__bounded.py:30: error: false when calling longest(['\x00', '\x00\x00']) (which returns '\x00')
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_12\qwen_v2_12_2__mutant_m4__bounded.py:31: info: Confirmed over all paths.

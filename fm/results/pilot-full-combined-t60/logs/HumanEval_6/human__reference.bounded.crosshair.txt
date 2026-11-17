@@ -1,0 +1,3 @@
+C:\dev-tools\cs3892-work\repo\fm\.venv\Scripts\python.exe -m crosshair check C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_6\human__reference__bounded.py --analysis_kind=PEP316 --report_all --per_condition_timeout=60.0
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_6\human__reference__bounded.py:34: info: Confirmed over all paths.
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_6\human__reference__bounded.py:35: info: Confirmed over all paths.

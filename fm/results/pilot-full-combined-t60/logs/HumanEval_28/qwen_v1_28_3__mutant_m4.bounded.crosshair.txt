@@ -1,0 +1,4 @@
+C:\dev-tools\cs3892-work\repo\fm\.venv\Scripts\python.exe -m crosshair check C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_28\qwen_v1_28_3__mutant_m4__bounded.py --analysis_kind=PEP316 --report_all --per_condition_timeout=60.0
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_28\qwen_v1_28_3__mutant_m4__bounded.py:26: error: false when calling concatenate([])
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_28\qwen_v1_28_3__mutant_m4__bounded.py:27: error: false when calling concatenate([])
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_28\qwen_v1_28_3__mutant_m4__bounded.py:28: error: Error while evaluating post condition: TypeError: object of type 'NoneType' has no len() when calling concatenate([])

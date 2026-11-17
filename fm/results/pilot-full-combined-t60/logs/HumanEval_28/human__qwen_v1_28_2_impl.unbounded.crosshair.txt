@@ -1,0 +1,2 @@
+C:\dev-tools\cs3892-work\repo\fm\.venv\Scripts\python.exe -m crosshair check C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_28\human__qwen_v1_28_2_impl.py --analysis_kind=PEP316 --report_all --per_condition_timeout=60.0
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_28\human__qwen_v1_28_2_impl.py:24: info: Not confirmed.

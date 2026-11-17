@@ -38,9 +38,12 @@ def banner(text: str) -> None:
 
 def demo_one(a, c, impl, entry, bound, out: Path, explain: bool) -> str:
     banner(f'Contract {c.contract_id} for {a.task} (verbatim from {rel(c.source_path)})')
-    for line in c.docstring_src.splitlines():
-        if line.strip() and not line.strip().startswith('>>>'):
-            print('   ' + line.strip())
+    # Only the pre:/post: block (prose and doctests are not part of the contract).
+    lines = [l.strip() for l in c.docstring_src.splitlines()]
+    first = next((i for i, l in enumerate(lines) if l.startswith(('pre:', 'post:'))), 0)
+    for line in lines[first:]:
+        if line and line.strip('"\'') and not line.startswith('>>>'):
+            print('   ' + line)
     if bound:
         print(f'   + harness analysis bound (first pre:): {" and ".join(bound) if isinstance(bound, list) else bound}')
     module = out / f'{c.contract_id}__{impl["impl_id"]}.py'

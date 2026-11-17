@@ -1,6 +1,6 @@
 # Milestone 1 — FM component (verification pipeline)
 
-Bingsong Liu, Group E, CS 3892 / 5892. Status as of 15 November 2026.
+Bingsong Liu, Group E, CS 3892 / 5892. Status as of 16 November 2026.
 
 ## What the verifier checks
 
@@ -111,8 +111,8 @@ N = `REJECTED_NONDISCRIMINATING`, I = `INCONCLUSIVE`):
 
 All six remaining inconclusive checks are the two known tool limits below (floats on /0,
 nonlinear products on /8). Every rejection in both runs was re-executed in a fresh process; the
-unbounded and combined runs found the same four rejections. No mutants or human contracts exist
-yet, so no mutation score is reported here.
+unbounded and combined runs found the same four rejections. No mutants or human contracts were
+part of this run; mutation scores are in the full pilot run below.
 
 Concrete contract defects found by CrossHair (each counterexample re-executed):
 
@@ -124,14 +124,50 @@ Concrete contract defects found by CrossHair (each counterexample re-executed):
 - `v2/HumanEval_0_3`: uses `b is not a` (object identity) for "different positions"; rejects the
   correct `True` on an official test input where equal floats are the same object.
 
+## Full pilot run: human and Qwen contracts against the validated mutants
+
+After Zoey's 36 validated mutants and Keyu's six human reference contracts were merged, one run
+covered every job (16 November 2026, commit `57b315d`, same host and versions as above, combined
+mode, 60 s): every contract (human + 19 parsed Qwen) x {reference, its task's 6 mutants}, the human
+contract x every Qwen implementation, and every Qwen contract x its own implementation. 229 checks,
+25 minutes: `results/pilot-full-combined-t60/`. Scoring follows `EVALUATION_PROTOCOL.md`
+(MS_eff = 0 for a contract that rejects the reference on a legal input).
+
+| Task | Human MS_eff | Qwen MS_eff, median (n) |
+|---|---|---|
+| HumanEval/0 | 1.00 | 0.50 (2) |
+| HumanEval/6 | 1.00 | 0.00 (1) |
+| HumanEval/8 | 1.00 | 0.75 (4) |
+| HumanEval/12 | 1.00 | 1.00 (2) |
+| HumanEval/28 | 1.00 | 1.00 (6) |
+| HumanEval/40 | 1.00 | 1.00 (4) |
+| all (mean) | 1.00 | 0.76 (19) |
+
+- The human contracts kill all 36 mutants (re-executed, discriminating, all inputs in D_T) and
+  never reject the reference (5 proven within B_T, HumanEval/0 inconclusive: floats).
+- Four Qwen contracts score MS_eff = 0: three are over-restrictive (`v1_8_3`, `v2_6_1`,
+  `v2_0_3`, above), and `v1_40_2` is too weak: its only postcondition is
+  `isinstance(__return__, bool)`, so all six HumanEval/40 mutants are ACCEPTED_PROVEN_BOUNDED
+  (verified wrong implementations).
+- `v2_6_1`'s three raw kills are all at inputs outside D_T (e.g. `'\x00'`); in-domain kills: 0.
+- Human contract x Qwen implementations (35): 27 proven within B_T, 6 inconclusive (all
+  HumanEval/0), 2 rejected: `v1_6_2` and `v2_6_1` return `[0]` for the legal input `''`
+  (reference: `[]`).
+- Determinacy: 212/229 = 93% of all checks, 147/150 = 98% of contract x mutant checks.
+- End-to-end view (17 Qwen samples that do not parse count as MS = 0) and per-prompt
+  aggregation: Zoey (protocol items 3-4).
+
 ## Demo
 
     cd fm
-    .venv/Scripts/python -m pipeline.demo --task HumanEval/8 --contract qwen_v1_8_3 --impl reference --bounded
+    .venv/Scripts/python -m pipeline.demo --task HumanEval/40 --contract qwen_v1_40_2,human --impl mutant_m4 --bounded
 
-Shows the contract verbatim, the live CrossHair output (7 postconditions confirmed over all paths,
-1 counterexample, ~1.5 s), what each verdict means, and the counterexample re-executed in a fresh
-process. With human contracts and mutants: `--contract human --impl mutant_<id>` vs. the Qwen contract.
+One implementation (mutant m4: checks pairs instead of triples), two contracts, ~3 s. Shows each
+contract's pre/post verbatim, the live CrossHair output, the counterexample re-executed in a fresh
+process (with its D_T membership and the reference's output at the same input), and one verdict
+line per contract: `qwen_v1_40_2  ACCEPTED_PROVEN_BOUNDED`, `human  REJECTED`. CrossHair is not
+seeded, so the counterexample values differ between runs. Single-contract form:
+`--contract qwen_v1_8_3 --impl reference` (the precedence defect).
 
 ## Reproduce
 
@@ -147,8 +183,8 @@ computed from re-execution, not from CrossHair's text.
 
 ## Remaining work
 
-- Run human contracts (Keyu) and validated mutants (Zoey) through the same pipeline: mutation
-  scores, human vs. Qwen, human contract vs. Qwen implementations.
+- Done for the pilot (above). Replay now records `in_domain` for every counterexample, and
+  over-restrictive is decided from legal-input rejections only (protocol items 1-2).
 - Report both unbounded and combined results; bounded confirmations hold only within B_T.
 - Known tool limits to report, not work around by editing contracts: nonlinear integer products
   (`math.prod` contracts on HumanEval/8 stay Not confirmed even at length <= 2) and float lists on

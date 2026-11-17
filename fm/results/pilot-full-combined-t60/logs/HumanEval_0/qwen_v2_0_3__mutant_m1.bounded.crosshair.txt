@@ -1,0 +1,5 @@
+C:\dev-tools\cs3892-work\repo\fm\.venv\Scripts\python.exe -m crosshair check C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_0\qwen_v2_0_3__mutant_m1__bounded.py --analysis_kind=PEP316 --report_all --per_condition_timeout=60.0
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_0\qwen_v2_0_3__mutant_m1__bounded.py:24: info: Not confirmed.
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_0\qwen_v2_0_3__mutant_m1__bounded.py:25: error: false when calling has_close_elements([0.0, -0.5], 0.5) (which returns True)
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_0\qwen_v2_0_3__mutant_m1__bounded.py:26: info: Not confirmed.
+C:\dev-tools\cs3892-work\repo\fm\results\pilot-full-combined-t60\modules\HumanEval_0\qwen_v2_0_3__mutant_m1__bounded.py:27: error: false when calling has_close_elements([-0.75, -0.5625, -0.59375], 0.03125) (which returns True)

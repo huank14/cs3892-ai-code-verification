@@ -41,7 +41,9 @@ mutants and compared with human-written reference contracts.
 The CrossHair toolchain has been tested on a toy contract and HumanEval/0.
 The toy contracts, the exact commands, and the verbatim verifier output are in
 [`fm/`](fm/README.md) (CrossHair 0.0.110, Z3 5.1.0, Python 3.13.5).
-The full benchmark and experiment pipeline are under development.
+The verification pipeline is implemented in [`fm/pipeline/`](fm/README.md) and has run the full
+six-task pilot (human and Qwen contracts against 36 validated mutants); results are in
+[`fm/MILESTONE_FM.md`](fm/MILESTONE_FM.md).
 
 The completed AI pilot contains 36 Qwen responses across two prompts and six
 HumanEval tasks. Code, original outputs, reproduction instructions and the FM
@@ -55,6 +57,19 @@ generation compatibility must not be reported as contract strength.
 Prompts, model settings, contracts, mutants, verifier outputs, runtimes,
 and counterexamples will be archived in this repository.
 
-Setup, dependencies, run commands, and archived verifier outputs for the toy
-runs are documented in [`fm/README.md`](fm/README.md). Instructions for the full
-experiment pipeline will be added as it is implemented.
+## How to run the tool
+
+Windows, Python 3.13, from the repository root:
+
+    cd fm
+    python -m venv .venv
+    .venv/Scripts/python -m pip install -r requirements.txt
+
+    # milestone demo: one wrong program (mutant m4 of HumanEval/40), two contracts (Qwen and human), about 6 s
+    .venv/Scripts/python -m pipeline.demo --task HumanEval/40 --contract qwen_v1_40_2,human --impl mutant_m4 --bounded
+
+    # full matrix: every contract against every implementation of the pilot tasks
+    .venv/Scripts/python -m pipeline.run_matrix --tasks all --timeout 60 --workers 12 --mode combined --contract-signature --out results/<run-name>
+
+On macOS/Linux use `.venv/bin/python`. All commands, analysis modes, and how to read the
+verdicts are in [`fm/README.md`](fm/README.md); AI generation is reproduced from [`ai/`](ai/README.md).

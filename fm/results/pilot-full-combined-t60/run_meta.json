@@ -1,0 +1,194 @@
+{
+  "started_utc": "2026-11-17T02:38:29Z",
+  "argv": [
+    "C:\\dev-tools\\cs3892-work\\repo\\fm\\pipeline\\run_matrix.py",
+    "--tasks",
+    "all",
+    "--kinds",
+    "reference,mutant,qwen,self",
+    "--timeout",
+    "60",
+    "--workers",
+    "16",
+    "--mode",
+    "combined",
+    "--contract-signature",
+    "--out",
+    "results/pilot-full-combined-t60"
+  ],
+  "per_condition_timeout": 60.0,
+  "workers": 16,
+  "jobs": 229,
+  "mode": "combined",
+  "analysis_bounds": {
+    "HumanEval/0": [
+      "len(numbers) <= 3"
+    ],
+    "HumanEval/12": [
+      "len(strings) <= 3 and all(len(s) <= 3 for s in strings)"
+    ],
+    "HumanEval/28": [
+      "len(strings) <= 3 and all(len(s) <= 3 for s in strings)"
+    ],
+    "HumanEval/40": [
+      "len(l) <= 4"
+    ],
+    "HumanEval/6": [
+      "len(paren_string) <= 4"
+    ],
+    "HumanEval/8": [
+      "len(numbers) <= 4"
+    ]
+  },
+  "contract_signature": true,
+  "inventory": {
+    "HumanEval/0": {
+      "contracts": [
+        "human",
+        "qwen_v2_0_2",
+        "qwen_v2_0_3"
+      ],
+      "implementations": [
+        "reference",
+        "mutant_m1",
+        "mutant_m2",
+        "mutant_m3",
+        "mutant_m4",
+        "mutant_m5",
+        "mutant_m6",
+        "qwen_v1_0_1_impl",
+        "qwen_v1_0_2_impl",
+        "qwen_v1_0_3_impl",
+        "qwen_v2_0_1_impl",
+        "qwen_v2_0_2_impl",
+        "qwen_v2_0_3_impl"
+      ]
+    },
+    "HumanEval/12": {
+      "contracts": [
+        "human",
+        "qwen_v2_12_2",
+        "qwen_v2_12_3"
+      ],
+      "implementations": [
+        "reference",
+        "mutant_m1",
+        "mutant_m2",
+        "mutant_m3",
+        "mutant_m4",
+        "mutant_m5",
+        "mutant_m6",
+        "qwen_v1_12_1_impl",
+        "qwen_v1_12_2_impl",
+        "qwen_v1_12_3_impl",
+        "qwen_v2_12_1_impl",
+        "qwen_v2_12_2_impl",
+        "qwen_v2_12_3_impl"
+      ]
+    },
+    "HumanEval/28": {
+      "contracts": [
+        "human",
+        "qwen_v1_28_1",
+        "qwen_v1_28_2",
+        "qwen_v1_28_3",
+        "qwen_v2_28_1",
+        "qwen_v2_28_2",
+        "qwen_v2_28_3"
+      ],
+      "implementations": [
+        "reference",
+        "mutant_m1",
+        "mutant_m2",
+        "mutant_m3",
+        "mutant_m4",
+        "mutant_m5",
+        "mutant_m6",
+        "qwen_v1_28_1_impl",
+        "qwen_v1_28_2_impl",
+        "qwen_v1_28_3_impl",
+        "qwen_v2_28_1_impl",
+        "qwen_v2_28_2_impl",
+        "qwen_v2_28_3_impl"
+      ]
+    },
+    "HumanEval/40": {
+      "contracts": [
+        "human",
+        "qwen_v1_40_2",
+        "qwen_v2_40_1",
+        "qwen_v2_40_2",
+        "qwen_v2_40_3"
+      ],
+      "implementations": [
+        "reference",
+        "mutant_m1",
+        "mutant_m2",
+        "mutant_m3",
+        "mutant_m4",
+        "mutant_m5",
+        "mutant_m6",
+        "qwen_v1_40_1_impl",
+        "qwen_v1_40_2_impl",
+        "qwen_v1_40_3_impl",
+        "qwen_v2_40_1_impl",
+        "qwen_v2_40_2_impl",
+        "qwen_v2_40_3_impl"
+      ]
+    },
+    "HumanEval/6": {
+      "contracts": [
+        "human",
+        "qwen_v2_6_1"
+      ],
+      "implementations": [
+        "reference",
+        "mutant_m1",
+        "mutant_m2",
+        "mutant_m3",
+        "mutant_m4",
+        "mutant_m5",
+        "mutant_m6",
+        "qwen_v1_6_1_impl",
+        "qwen_v1_6_2_impl",
+        "qwen_v1_6_3_impl",
+        "qwen_v2_6_1_impl",
+        "qwen_v2_6_2_impl",
+        "qwen_v2_6_3_impl"
+      ]
+    },
+    "HumanEval/8": {
+      "contracts": [
+        "human",
+        "qwen_v1_8_2",
+        "qwen_v1_8_3",
+        "qwen_v2_8_2",
+        "qwen_v2_8_3"
+      ],
+      "implementations": [
+        "reference",
+        "mutant_m1",
+        "mutant_m2",
+        "mutant_m3",
+        "mutant_m4",
+        "mutant_m5",
+        "mutant_m6",
+        "qwen_v1_8_1_impl",
+        "qwen_v1_8_2_impl",
+        "qwen_v1_8_3_impl",
+        "qwen_v2_8_2_impl",
+        "qwen_v2_8_3_impl"
+      ]
+    }
+  },
+  "versions": {
+    "python": "3.13.5 (main, Jul 23 2025, 00:30:06) [MSC v.1944 64 bit (AMD64)]",
+    "crosshair": "0.0.110",
+    "z3": "5.1.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu_count": 28,
+    "git_commit": "57b315d8ebf47291e7d4a5b33e0df103f0d4f562 (git archive)",
+    "git_dirty": null
+  },
+  "finished_utc": "2026-11-17T03:03:33Z"
+}
